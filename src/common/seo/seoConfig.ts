@@ -4,6 +4,7 @@ interface SEOEntry {
   title: string
   description: string
   noIndex: boolean
+  keywords?: string
 }
 
 type SEOConfigValue = SEOEntry | ((id?: string, params?: Record<string, string>) => SEOEntry)
@@ -11,8 +12,9 @@ type SEOConfigValue = SEOEntry | ((id?: string, params?: Record<string, string>)
 export const seoConfig: Record<string, SEOConfigValue> = {
   // ── Static ───────────────────────────────────────────────────────────────
   [RoutePath.HOME]: {
-    title: 'Home | Groomit',
-    description: 'Book professional pet grooming services easily with Groomit.',
+    title: 'Mobile Pet Grooming Near You | In-Home Dog & Cat Grooming | Groomit',
+    description: 'Book same-day mobile pet grooming or in-home dog & cat grooming. 179K+ pets groomed, 4.8-star rating. Real-time availability, no calls needed. Book in minutes.',
+    keywords: 'pet grooming near me, mobile pet grooming, dog grooming near me, cat grooming near me, in home pet grooming, mobile dog grooming, same day dog grooming, on demand pet grooming',
     noIndex: false,
   },
   [RoutePath.DASHBOARD]: {
@@ -21,8 +23,9 @@ export const seoConfig: Record<string, SEOConfigValue> = {
     noIndex: true,
   },
   [RoutePath.GROOMERS]: {
-    title: 'Find Groomers | Groomit',
-    description: 'Discover trusted and professional pet groomers near you.',
+    title: 'Find Pet Groomers Near You | Verified Mobile Dog & Cat Groomers | Groomit',
+    description: 'Discover trusted and professional pet groomers near you. View verified reviews, real-time availability, and book instantly. Background-checked professionals.',
+    keywords: 'pet groomers near me, dog groomers near me, cat groomers near me, mobile pet groomers, professional pet groomer',
     noIndex: false,
   },
   [RoutePath.APPOINTMENTS]: {
@@ -132,8 +135,9 @@ export const seoConfig: Record<string, SEOConfigValue> = {
 
   // ── Auth & Setup ─────────────────────────────────────────────────────────
   [RoutePath.CREATE_ACCOUNT]: {
-    title: 'Create Account | Groomit',
-    description: 'Join Groomit to book professional pet grooming.',
+    title: 'Create Account | Book Pet Grooming Online | Groomit',
+    description: 'Join Groomit to book professional pet grooming. Mobile spa, in-home, and salon services available. Same-day appointments.',
+    keywords: 'pet grooming account, book pet grooming, groomit signup',
     noIndex: false,
   },
   [RoutePath.CHANGE_PASSWORD]: {
@@ -147,3 +151,39 @@ export const seoConfig: Record<string, SEOConfigValue> = {
     noIndex: true,
   },
 }
+
+// FAQ data for structured data
+export const faqData = [
+  {
+    question: "What is Groomit?",
+    answer: "Groomit is America's first on-demand, verified pet-grooming marketplace. We connect pet parents with trusted professionals who deliver salon-quality care right at your doorstep. Book instantly, see transparent pricing by ZIP code, and choose between mobile van, in-home, or salon services.",
+  },
+  {
+    question: "How do I book a grooming?",
+    answer: "Enter your address, select your pet's details and service type, and you'll see instant pricing and available times. You can either choose your groomer manually or let the Best Match Algorithm confirm the ideal professional automatically.",
+  },
+  {
+    question: "Can I choose my own groomer?",
+    answer: "Yes! View nearby groomers, check their photos, experience, and verified reviews, and select your favorite. Most clients start with Best Match for speed, then rebook their preferred groomer next time.",
+  },
+  {
+    question: "How does pricing work?",
+    answer: "Pricing is fully transparent; it is shown before booking based on your pet's breed, size, and location. Groomers set their own rates, and Groomit adds a small service fee for support and protection. No hidden costs.",
+  },
+  {
+    question: "Are Groomit groomers employees?",
+    answer: "No. Groomit professionals are independent contractors (ICs) who use the Groomit platform to provide their services. This model gives groomers flexibility and control while allowing Groomit to offer more availability, competitive pricing, and nationwide coverage than employee-based companies.",
+  },
+  {
+    question: "Is it safe to book with an independent groomer?",
+    answer: "Yes — safety is built into Groomit's system. All professionals pass background and identity checks before joining. Every booking is protected by Groomit's platform-level insurance. Our support team monitors performance and service quality continuously.",
+  },
+  {
+    question: "How is Groomit different from traditional grooming companies?",
+    answer: "Traditional mobile or salon chains use fixed routes, limited vans, and employee groomers with little flexibility. Groomit operates as a technology-driven marketplace, giving you transparent pricing and real-time availability, verified reviews from actual customers, and nationwide coverage with local convenience.",
+  },
+  {
+    question: "Why should I trust Groomit with my pets?",
+    answer: "Safety is built into Groomit's system. All professionals pass background and identity checks before joining. Every booking is protected by Groomit's platform-level insurance. Our support team monitors performance and service quality continuously. You enjoy the personal attention of an independent groomer with the security of a national brand.",
+  },
+]
