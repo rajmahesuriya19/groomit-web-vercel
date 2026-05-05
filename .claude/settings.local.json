@@ -4,7 +4,9 @@
       "Bash(npm install *)",
       "Bash(cd /d d:\\\\groomit-web-vercel)",
       "Bash(npx tsc *)",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(xargs grep *)",
+      "Bash(Get-ChildItem -Path \"d:\\\\groomit-web-vercel\\\\src\\\\components\\\\home\" -File)"
     ]
   }
 }

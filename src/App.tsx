@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { RootLayout } from '@/layouts/RootLayout'
-import { HomePage } from '@/pages/HomePage'
+import HomePage from '@/pages/HomePage'
 import { AboutPage } from '@/pages/AboutPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import DynamicSEO from '@/common/seo/DynamicSEO'

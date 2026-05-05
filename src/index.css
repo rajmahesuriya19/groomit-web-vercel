@@ -4,6 +4,41 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+/* ─── Dark mode variant ──────────────────────────────────────────────────── */
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Design Tokens (CSS Variables) ─────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #2A2A2A;
+  --groomit-red: #FF385C;
+  --groomit-black: #2A2A2A;
+  --groomit-gray: #4A5565;
+  --groomit-light-bg: #F1F1F3;
+  --groomit-border: #E4E4E8;
+  --groomit-footer-bg: #2E2E2E;
+  --radius: 0.625rem;
+}
+
+/* ─── Tailwind Theme Tokens ──────────────────────────────────────────────── */
+/* Tailwind generates bg-*, text-*, border-* utilities from --color-* tokens */
+@theme {
+  /* Spacing */
+  --spacing-330: 82.5rem;
+  --spacing-105: 26.25rem;
+  /* Z-index */
+  --z-1050: 1050;
+  /* Colors */
+  --color-background:        var(--background);
+  --color-foreground:        var(--foreground);
+  --color-groomit-red:       var(--groomit-red);
+  --color-groomit-black:     var(--groomit-black);
+  --color-groomit-gray:      var(--groomit-gray);
+  --color-groomit-light-bg:  var(--groomit-light-bg);
+  --color-groomit-border:    var(--groomit-border);
+  --color-groomit-footer-bg: var(--groomit-footer-bg);
+}
+
 /* ─── Filson Pro Font Faces ──────────────────────────────────────────────── */
 @font-face {
   font-family: 'FilsonPro';
@@ -24,14 +59,171 @@
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
-body {
-  font-family: 'FilsonPro', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  color: #1a1a1a;
+@layer base {
+  * {
+    @apply border-groomit-border;
+  }
+  body {
+    font-family: 'FilsonPro', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    @apply bg-background text-foreground;
+  }
+  @media (max-width: 768px) {
+    body, html { overflow-x: clip; }
+  }
 }
 
+/* ─── Inter Font Utilities ───────────────────────────────────────────────── */
+@utility ff-inter-semibold    { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 600; }
+@utility ff-inter-bold        { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 700; }
+@utility ff-inter-regular-400 { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 400; }
+
+/* ─── Font Size Utilities ────────────────────────────────────────────────── */
+/* Kept as plain CSS (not @utility) so media-query overrides work correctly  */
+.fs-55px  { font-size: 55px; }
+.fs-36px  { font-size: 36px; }
+.fs-32px  { font-size: 32px; }
+.fs-24-h2 { font-size: 24px; }
+.fs-20-h3 { font-size: 20px; }
+.fs-20    { font-size: 20px; }
+.fs-16-h4 { font-size: 16px; }
+.fs-16    { font-size: 16px; }
+.fs-14-h5 { font-size: 14px; }
+.fs-14    { font-size: 14px; }
+
+/* ─── Color Utilities ────────────────────────────────────────────────────── */
+@utility font-black-2A2A2A       { color: #2A2A2A; }
+@utility font-gray-4A5565        { color: #4A5565; }
+@utility font-red-i              { color: #FF385C; }
+@utility font-red                { color: #FF385C; }
+@utility text-4A5565             { color: #4A5565; }
+@utility text-FF314A             { color: #FF314A; }
+@utility text-groomit-color-black { color: #2E2E2E; }
+
+/* ─── Background Utilities ───────────────────────────────────────────────── */
+@utility find-bg-F1F1F3 { background-color: #F1F1F3; }
+@utility light-red      { background-color: #FFEBEE; }
+/* bg-light-blue and bg-red kept as plain CSS — multi-property or name risks */
+.bg-light-blue { background-color: #EBF3FD; border-radius: 999px; padding: 8px 16px; }
+.bg-red        { background-color: #FF385C; }
+
+/* ─── Spacing Utilities ──────────────────────────────────────────────────── */
+@utility pt-60-px    { padding-top: 60px; }
+@utility pt-60-pb-60 { padding-top: 60px; padding-bottom: 60px; }
+@utility pb-50-px    { padding-bottom: 50px; }
+@utility pt-25-px    { padding-top: 25px; }
+@utility pt-20-px    { padding-top: 20px; }
+@utility pt-10-px    { padding-top: 10px; }
+@utility pb-20-px    { padding-bottom: 20px; }
+@utility mt-20-px    { margin-top: 20px; }
+@utility mt-15-px    { margin-top: 15px; }
+@utility mt-10-px    { margin-top: 10px; }
+@utility gap-10-px   { gap: 10px; }
+@utility gap-14-px   { gap: 14px; }
+@utility gap-30-px   { gap: 30px; }
+@utility pl-30-px    { padding-left: 30px; }
+/* p-20 kept as plain CSS — conflicts with Tailwind's p-20 (padding: 5rem)  */
+.p-20 { padding: 20px; }
+
+/* ─── Border Utilities ───────────────────────────────────────────────────── */
+/* Kept as plain CSS — shorthand or !important can't go in @utility cleanly  */
+.border-E4E4E8 { border: 1px solid #E4E4E8; }
+.border-red    { border-color: #FF385C !important; }
+
+/* ─── Width Utilities ────────────────────────────────────────────────────── */
+/* w-55 / w-65 kept as plain CSS — conflict with Tailwind's spacing scale    */
+.w-55    { width: 55%; }
+.w-65    { width: 65%; }
+@utility w-95per  { width: 95%; }
+@utility w-200px  { width: 200px; }
+@utility w-288px  { width: 288px; }
+
+/* ─── Misc Utilities ─────────────────────────────────────────────────────── */
+.green-dot       { width: 10px; height: 10px; background-color: #22C55E; border-radius: 50%; }
+.responsive-image { max-width: 100%; height: auto; }
+.review-content-h { min-height: 72px; }
+.review-space    { padding: 20px 30px; gap: 30px; }
+.review_star     { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; }
+.pet-box         { display: flex; -ms-overflow-style: none; scrollbar-width: none; }
+.pet-box::-webkit-scrollbar { display: none; }
+
+/* ─── Nav ────────────────────────────────────────────────────────────────── */
+.groomit__a--navLink             { font-size: 16px; font-weight: 400; color: #2E2E2E; text-decoration: none; transition: color 0.2s; }
+.groomit__a--navLink:hover       { color: #FF385C; }
+.groomit__colorRed               { color: #FF385C !important; }
+.groomit__overLap__a             { display: block; border-radius: 16px; overflow: hidden; }
+
+/* ─── Button ─────────────────────────────────────────────────────────────── */
+.groomit__button       { background-color: #FF385C; color: white; border: none; padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; cursor: pointer; transition: opacity 0.2s; }
+.groomit__button:hover { opacity: 0.9; }
+
+/* ─── Tabs ───────────────────────────────────────────────────────────────── */
+.tab-group     { position: relative; }
+.tab-container { display: flex; background: #F1F1F3; border-radius: 12px; padding: 4px; position: relative; overflow: hidden; }
+.tab-container button { flex: 1; padding: 12px 20px; border: none; background: transparent; cursor: pointer; position: relative; z-index: 1; font-size: 16px; transition: all 0.25s ease; border-radius: 10px; font-weight: 400; }
+.tab-container button.active { background: white; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.tab-position  { margin-top: 10px; }
+
+/* ─── Time Slots ─────────────────────────────────────────────────────────── */
+.time-slot-div       { border: 1px solid #E4E4E8; background: white; cursor: pointer; transition: all 0.2s ease; }
+.time-slot-div:hover { border-color: #FF385C; background-color: #FFF5F7; }
+
+/* ─── Prefer Box ─────────────────────────────────────────────────────────── */
+.prefer-box { background: #F4F4F6; border-radius: 16px; padding: 20px; margin-top: 10px; }
+
+/* ─── Divider ────────────────────────────────────────────────────────────── */
+.divider-container          { display: flex; align-items: center; text-align: center; margin: 16px 0; }
+.divider-container::before,
+.divider-container::after   { content: ''; flex: 1; border-bottom: 1px solid #E4E4E8; }
+.divider-container .or-text { padding: 0 16px; }
+
+/* ─── Red Bullets ────────────────────────────────────────────────────────── */
+.custom-red-bullets li              { position: relative; padding-left: 8px; }
+.custom-red-bullets                 { list-style: none; padding-left: 20px; }
+.custom-red-bullets li::before      { content: ''; position: absolute; left: -12px; top: 8px; width: 6px; height: 6px; background-color: #FF385C; border-radius: 50%; }
+
+/* ─── Floating Label Inputs ──────────────────────────────────────────────── */
+.input-control  { width: 100%; padding: 20px 16px 8px; font-size: 16px; outline: none; }
+.form-group     { position: relative; width: 100%; }
+.floating-label { position: absolute; top: 50%; left: 16px; transform: translateY(-50%); color: #9CA3AF; pointer-events: none; transition: all 0.2s; }
+.input-control:focus ~ .floating-label,
+.input-control:not(:placeholder-shown) ~ .floating-label { top: 8px; font-size: 12px; transform: translateY(0); }
+
+/* ─── FAQ ────────────────────────────────────────────────────────────────── */
+.faqbox      { padding: 24px; }
+.faqs-button { padding: 0; background: white; border: none; text-align: left; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+.faqs-card   { display: flex; flex-direction: column; }
+.input-bg    { background-color: white; }
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.footer-new-bg        { background-color: #2E2E2E; }
+.footer-topnew-bg     { background-color: #3A3A3A; border-bottom: 1px solid #4A4A4A; }
+.footer-bottom-border { border-bottom: 1px solid #4A4A4A; margin: 30px 0; }
+.footer-50px          { padding: 50px 0; }
+.footer-links-bottom  { display: flex; gap: 8px; flex-wrap: wrap; }
+.red-button-footer    { border-radius: 999px; padding: 12px 24px; font-size: 16px; }
+.custom-toggle        { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; background: transparent; border: none; border-bottom: 1px solid #4A4A4A; cursor: pointer; }
+.custom-toggle::after { content: '+'; color: white; font-size: 24px; }
+.custom-body          { display: flex; flex-direction: column; gap: 12px; padding: 16px 0; }
+
+/* ─── Swiper ─────────────────────────────────────────────────────────────── */
+.swiper-pagination-bullet-active { background: #FF385C !important; }
+
+/* ─── Responsive Overrides ───────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  body,
-  html {
-    overflow-x: clip;
-  }
+  .fs-55px      { font-size: 36px; }
+  .fs-32px      { font-size: 24px; }
+  .fs-24-h2     { font-size: 20px; }
+  .fs-20-h3     { font-size: 18px; }
+  .pt-60-pb-60  { padding-top: 30px; padding-bottom: 30px; }
+  .pt-60-px     { padding-top: 30px; }
+  .pt-30-mobile { padding-top: 30px; }
+  .w-65         { width: 100%; }
+  .w-55         { width: 100%; }
+  .w-95per      { width: 100%; }
+  .review-space { padding: 16px; gap: 16px; }
+  .footer-50px  { padding: 30px 0; }
+  .w-288px      { width: 100%; }
+  .footer-links-bottom { justify-content: center; }
+  .footer-new-bg       { padding-bottom: 100px !important; }
+  .bg-transparent-mobile { background-color: transparent; }
 }
