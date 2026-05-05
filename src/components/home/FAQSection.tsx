@@ -54,70 +54,102 @@ export default function FAQSection() {
       : faqs.slice(0, initialCount)
 
   return (
-    <section className="find-bg-F1F1F3 pt-60-pb-60">
+    <section 
+      className="find-bg-F1F1F3 pt-60-pb-60"
+      aria-labelledby="faq-heading"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="ff-inter-semibold fs-32px text-left md:text-center mb-0">Questions, Answered</h2>
-        <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center mt-3 md:mt-0">
-          Everything you need to know before booking
-        </div>
+        {/* Section Header with SEO-optimized heading */}
+        <header className="text-center mb-6">
+          <h2 
+            id="faq-heading"
+            className="font-heading font-semibold text-section text-groomit-black mb-2"
+          >
+            Frequently Asked Questions About Pet Grooming
+          </h2>
+          <p className="text-body text-groomit-gray max-w-2xl mx-auto">
+            Everything you need to know before booking mobile pet grooming, in-home grooming, or salon services
+          </p>
+        </header>
 
         {/* Search */}
-        <div className="flex items-center bg-white border border-groomit-border justify-between pr-4 rounded-2xl mt-20-px">
-          <div className="relative form-group">
-            <input
-              type="text"
-              className="input-control border-0 bg-transparent ff-inter-regular-400 fs-16"
-              id="js-input-faq"
-              placeholder=" "
-              required
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+        <div className="max-w-2xl mx-auto">
+          <div className="flex items-center bg-white border border-groomit-border justify-between pr-4 rounded-2xl mt-20-px">
+            <div className="relative form-group">
+              <input
+                type="search"
+                className="input-control border-0 bg-transparent font-body text-base"
+                id="faq-search"
+                placeholder=" "
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                aria-label="Search frequently asked questions"
+              />
+              <label htmlFor="faq-search" className="font-body text-sm floating-label">
+                Search FAQs
+              </label>
+            </div>
+            <img 
+              src={`${IMG_BASE}/v7/images/home/search.svg`} 
+              alt="" 
+              width={22} 
+              height={22}
+              aria-hidden="true"
             />
-            <label htmlFor="js-input-faq" className="ff-inter-regular-400 fs-14-h5 floating-label">Search FAQs</label>
           </div>
-          <img src={`${IMG_BASE}/v7/images/home/search.svg`} alt="Search" width={22} height={22} />
         </div>
 
-        {/* FAQ accordion */}
-        <div className="faqbox bg-white border rounded-3xl mt-20-px">
-          <div className="faqs-card">
+        {/* FAQ accordion - Using semantic HTML */}
+        <div className="faqbox bg-white border rounded-3xl mt-20-px max-w-4xl mx-auto">
+          <div className="faqs-card" role="list">
             {filteredFaqs.map((faq, i) => (
-              <div key={i} className={`accordion-item border-0 ${i < filteredFaqs.length - 1 ? "border-b" : ""} pb-5 ${i > 0 ? "pt-5" : ""}`}>
-                <h2>
+              <article 
+                key={i} 
+                className={`${i < filteredFaqs.length - 1 ? "border-b border-groomit-border" : ""} pb-5 ${i > 0 ? "pt-5" : ""}`}
+                role="listitem"
+              >
+                <h3 className="m-0">
                   <button
-                    className="accordion-button faqs-button bg-white ff-inter-regular-400 fs-20-h3 text-black shadow-none w-full flex justify-between items-center text-left cursor-pointer border-0 p-0"
+                    className="w-full flex justify-between items-center text-left cursor-pointer bg-transparent border-0 p-0 font-heading text-card-title text-groomit-black hover:text-groomit-red transition-colors"
                     type="button"
                     onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                     aria-expanded={openIndex === i}
+                    aria-controls={`faq-answer-${i}`}
+                    id={`faq-question-${i}`}
                   >
                     <span className="pr-12">{faq.q}</span>
                     <svg
-                      className={`w-5 h-5 shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
+                      className={`w-5 h-5 shrink-0 transition-transform duration-300 text-groomit-gray ${openIndex === i ? "rotate-180" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                </h2>
+                </h3>
                 <div
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${i}`}
                   className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === i ? "max-h-125 opacity-100 mt-3" : "max-h-0 opacity-0"
+                    openIndex === i ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 leading-relaxed">
+                  <p className="text-body text-groomit-gray leading-relaxed m-0">
                     {faq.a}
-                  </div>
+                  </p>
                 </div>
-              </div>
+              </article>
             ))}
 
             {!showAll && !search && faqs.length > initialCount && (
-              <div className="flex justify-center mt-15-px">
+              <div className="flex justify-center mt-15-px pt-4">
                 <button
-                  className="bg-transparent mt-10-px border-0 ff-inter-semibold fs-16-h4 font-red-i cursor-pointer"
+                  className="bg-transparent border-0 font-heading font-semibold text-base text-groomit-red cursor-pointer hover:underline"
                   onClick={() => setShowAll(true)}
+                  aria-label="Show all frequently asked questions"
                 >
                   See all FAQs
                 </button>

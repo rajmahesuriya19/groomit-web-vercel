@@ -1,0 +1,59 @@
+# Groomit - Mobile Pet Grooming Service
+# https://groomit.me
+
+User-agent: *
+Allow: /
+
+# Disallow private/auth pages
+Disallow: /dashboard
+Disallow: /appointments
+Disallow: /inbox
+Disallow: /account
+Disallow: /pets
+Disallow: /service-addresses
+Disallow: /cards
+Disallow: /checkout
+Disallow: /change-password
+
+# Disallow API routes
+Disallow: /api/
+
+# Disallow booking flow (user-specific)
+Disallow: /book/
+Disallow: /guest/booking/
+
+# Sitemap location
+Sitemap: https://groomit.me/sitemap.xml
+
+# Crawl delay for politeness
+Crawl-delay: 1
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard
+Disallow: /appointments
+Disallow: /inbox
+Disallow: /account
+Disallow: /pets
+Disallow: /service-addresses
+Disallow: /cards
+Disallow: /checkout
+Disallow: /api/
+Disallow: /book/
+Disallow: /guest/booking/
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard
+Disallow: /appointments
+Disallow: /inbox
+Disallow: /account
+Disallow: /pets
+Disallow: /service-addresses
+Disallow: /cards
+Disallow: /checkout
+Disallow: /api/
+Disallow: /book/
+Disallow: /guest/booking/
