@@ -24,7 +24,8 @@ export default function Header() {
             <a href="/recurring-booking" className="text-[#4a5565] hover:text-[#2a2a2a] text-sm font-medium transition-colors">Recurring Booking</a>
             <a href="/location" className="text-[#4a5565] hover:text-[#2a2a2a] text-sm font-medium transition-colors">Locations</a>
             <a href="https://blog.groomit.me/" target="_blank" rel="noreferrer" className="text-[#4a5565] hover:text-[#2a2a2a] text-sm font-medium transition-colors">Blog</a>
-            <a href="/dog-groomer-jobs" className="text-[#4a5565] hover:text-[#2a2a2a] text-sm font-medium transition-colors">Join Groomit</a>
+            <a href="/dog-groomer-jobs" className="text-[#FF385C] hover:text-[#E62E4F] text-sm font-medium transition-colors">Apply as Groomer</a>
+            <a href="/salon-groom" className="text-[#FF385C] hover:text-[#E62E4F] text-sm font-medium transition-colors">Apply as Salon</a>
           </nav>
 
           <div className="flex items-center gap-3">
