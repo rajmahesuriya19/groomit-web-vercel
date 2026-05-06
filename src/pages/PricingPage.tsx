@@ -12,7 +12,9 @@ import PricingFAQ from "@/components/pricing/PricingFAQ"
 export default function PricingPage() {
   return (
     <div className="bg-white">
-      <HeroSection />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <HeroSection />
+      </div>
       <BookingForm />
       <PricingCards />
       <ServiceTypeSection />
