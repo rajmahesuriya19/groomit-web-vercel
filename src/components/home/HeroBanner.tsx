@@ -1,127 +1,58 @@
-const IMG_BASE = "https://raj.dev.groomit.me"
+const BLOB = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com"
 
 export default function HeroBanner() {
   return (
-    <section className="container mx-auto px-4 pt-4 md:pt-6">
-      {/* Desktop View */}
-      <div className="relative hidden md:block rounded-3xl overflow-hidden">
-        <div className="relative">
+    <section className="py-[60px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-[20px] overflow-hidden">
           <img
-            src={`${IMG_BASE}/v7/images/home/home-banner-web.webp`}
             alt="Groomit mobile grooming van with groomer and dog"
-            className="w-full h-auto object-cover"
-            width={1125}
-            height={465}
-            fetchPriority="high"
-            decoding="sync"
+            width={1280}
+            height={500}
+            className="hidden md:block w-full h-auto object-cover rounded-[20px]"
+            src={`${BLOB}/latest-home-banner-mFtdiyzZCcFCYhdIGMFaTKyXA8DiUi.png`}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
-        </div>
-
-        <div className="absolute inset-0 flex items-center">
-          <div className="p-8 lg:p-12 xl:p-16 max-w-xl lg:max-w-2xl">
-            <h1 className="text-white font-heading font-semibold text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight">
-              Pet Grooming
-              <span className="block text-white/90">On Demand</span>
-            </h1>
-
-            <p className="text-white/90 text-lg lg:text-xl mt-5 leading-relaxed max-w-md">
-              Top-rated groomers near you. See real-time availability and book instantly. No calls, no waiting.
-            </p>
-
-            <div className="mt-8">
-              <a href="/guest/booking/start" className="inline-block">
-                <button className="bg-groomit-red hover:bg-[#E62E4F] text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+          <img
+            alt="Groomit mobile grooming van"
+            width={400}
+            height={500}
+            className="block md:hidden w-full h-auto object-cover rounded-[20px]"
+            src={`${BLOB}/hero-mobile-img-7Pu5iprPcdSC74wGF5fWjn9sr51dKA.webp`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent rounded-[20px]">
+            <div className="h-full flex flex-col justify-center p-6 md:p-10 lg:p-14 max-w-lg">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white text-balance">
+                Pet Grooming<br />On Demand
+              </h1>
+              <p className="mt-3 md:mt-4 text-white/80 text-sm md:text-base max-w-md">
+                Top-rated groomers near you. See real-time availability and book instantly. No calls, no waiting.
+              </p>
+              <a href="/guest/booking/start" className="no-underline w-fit">
+                <button className="mt-4 md:mt-6 bg-[#ff314a] hover:bg-[#e02a40] text-white px-6 md:px-8 py-3 md:py-3.5 text-sm md:text-base rounded-lg font-medium transition-all cursor-pointer border-0">
                   Book Now
                 </button>
               </a>
-            </div>
-
-            <p className="text-white/70 text-sm mt-4">
-              Real online booking. Confirmed in minutes.
-            </p>
-
-            <div className="flex items-center gap-3 mt-4">
-              <a href="/download-groomit-app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
-                <img src={`${IMG_BASE}/v7/images/home/play-store.svg`} width={120} height={36} alt="Google Play" />
-              </a>
-              <a href="/download-groomit-app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
-                <img src={`${IMG_BASE}/v7/images/home/app-store.svg`} width={120} height={36} alt="App Store" />
-              </a>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-6">
-              <div className="flex items-center gap-2">
-                <img
-                  src={`${IMG_BASE}/v7/images/home/pet-paws.svg`}
-                  alt=""
-                  width={20}
-                  height={20}
-                  aria-hidden="true"
-                />
-                <span className="text-white font-medium">200K+ Pets Groomed</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <img
-                  src={`${IMG_BASE}/v7/images/home/flash.svg`}
-                  alt=""
-                  width={20}
-                  height={20}
-                  aria-hidden="true"
-                />
-                <span className="text-white font-medium">Same Day Booking</span>
+              <p className="mt-3 md:mt-4 text-white/60 text-xs md:text-sm">
+                Real online booking. Confirmed in minutes.
+              </p>
+              <div className="mt-4 md:mt-6 flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                  <span className="text-white">200K+ Pets Groomed</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth={2} />
+                    <line x1="16" y1="2" x2="16" y2="6" strokeWidth={2} />
+                    <line x1="8" y1="2" x2="8" y2="6" strokeWidth={2} />
+                    <line x1="3" y1="10" x2="21" y2="10" strokeWidth={2} />
+                  </svg>
+                  <span className="text-white">Same Day Booking</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile View */}
-      <div className="relative md:hidden rounded-2xl overflow-hidden">
-        <div className="relative">
-          <img
-            src={`${IMG_BASE}/v7/images/home/hero-mobile.webp`}
-            alt="Professional mobile pet grooming service"
-            className="w-full h-auto object-cover min-h-[480px]"
-            fetchPriority="high"
-            decoding="sync"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col justify-between p-5">
-          <div className="text-center pt-4">
-            <h1 className="text-white font-heading font-semibold text-3xl leading-tight tracking-tight">
-              Pet Grooming
-              <span className="block text-white/90">On Demand</span>
-            </h1>
-
-            <p className="text-white/90 text-base mt-3 leading-relaxed px-4">
-              Top-rated groomers near you. Book instantly. No calls needed.
-            </p>
-          </div>
-
-          <div className="space-y-4 pb-2">
-            <div className="flex justify-center gap-4 text-sm">
-              <div className="flex items-center gap-1.5">
-                <img src={`${IMG_BASE}/v7/images/home/pet-paws.svg`} alt="" width={16} height={16} aria-hidden="true" />
-                <span className="text-white font-medium">200K+ Pets</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <img src={`${IMG_BASE}/v7/images/home/flash.svg`} alt="" width={16} height={16} aria-hidden="true" />
-                <span className="text-white font-medium">Same Day</span>
-              </div>
-            </div>
-
-            <a href="/guest/booking/start" className="block">
-              <button className="w-full bg-groomit-red hover:bg-[#E62E4F] text-white font-semibold text-lg py-4 rounded-xl transition-all duration-200 shadow-lg">
-                Book Now
-              </button>
-            </a>
-
-            <p className="text-white/60 text-xs text-center">
-              Confirmed in minutes. No credit card required.
-            </p>
           </div>
         </div>
       </div>

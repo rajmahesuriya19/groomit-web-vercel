@@ -1,5 +1,14 @@
 const IMG_BASE = "https://raj.dev.groomit.me"
 
+function CheckCircle() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
+      <circle cx="10" cy="10" r="10" fill="#ECFDF5" />
+      <path d="M6 10l2.5 2.5L14 7.5" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 const serviceOptions = [
   {
     icon: `${IMG_BASE}/v7/images/home/mobile-van.svg`,
@@ -48,15 +57,16 @@ export default function FindBestFit() {
           {serviceOptions.map((service) => (
             <div key={service.title} className="bg-white border w-full min-w-[280px] rounded-2xl p-20">
               <div className="flex items-center">
-                <div className="border rounded-full p-3 mr-3">
+                <div className="border rounded-full p-3 mr-3 bg-[#FFF0F2]">
                   <img src={service.icon} width={24} height={24} alt={service.title} />
                 </div>
                 <div className="ff-inter-semibold fs-20">{service.title}</div>
               </div>
-              <ul className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 custom-red-bullets mb-0">
+              <ul className="list-none mb-0 p-0 mt-5">
                 {service.features.map((feature, i) => (
-                  <li key={i} className={`${i === 0 ? "pt-20-px" : ""} ${i < service.features.length - 1 ? "pb-10-px" : ""}`}>
-                    <div>{feature}</div>
+                  <li key={i} className={`flex items-start gap-3 ${i < service.features.length - 1 ? "pb-3" : ""}`}>
+                    <CheckCircle />
+                    <span className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565">{feature}</span>
                   </li>
                 ))}
               </ul>
