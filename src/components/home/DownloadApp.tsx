@@ -32,7 +32,7 @@ export default function DownloadApp() {
               href="tel:+16467185360"
               className="flex items-center justify-start md:justify-start justify-center ff-inter-semibold fs-16 mt-10-px pr-2 no-underline text-white"
             >
-              Call to Book
+              Call Us to Book
               <img src={`${IMG_BASE}/v7/images/webapp/icons/call-white.svg`} height={24} width={24} alt="Call to Book" className="mx-2" />
               <span className="underline">+1 (646) 718-5360</span>
             </a>

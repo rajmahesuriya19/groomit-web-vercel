@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Autoplay } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
@@ -8,19 +8,16 @@ import "swiper/css/navigation"
 const IMG_BASE = "https://raj.dev.groomit.me"
 
 const reviews = [
-  { name: "Debra L", city: "Glen Ridge", state: "NJ", date: "27 Mar, 2026", petName: "MAC", comment: "Mac looks so adorable, is fluffy and smells amazing", groomer: "Diego" },
-  { name: "Marie R", city: "Fresh Meadows", state: "NY", date: "27 Mar, 2026", petName: "Loki Blu", comment: "Diego was excellent! I know my dog is very anxious and scared of being groomed. Diego did a phenomenal job Grooming my Loki B", groomer: "Diego" },
-  { name: "Philip M", city: "East Meadow", state: "NY", date: "27 Mar, 2026", petName: "Charlie", comment: "She was great", groomer: "Lisa" },
-  { name: "Mary Z", city: "Castle Rock", state: "CO", date: "27 Mar, 2026", petName: "Sam", comment: "Sherry was amazing with Sam! Sam is very anxious and this was his first time getting groomed in a mobile van. Sherry was very", groomer: "Sherry" },
-  { name: "Samantha B", city: "Bronx", state: "NY", date: "27 Mar, 2026", petName: "Ein", comment: "Great communication and service! Ein looks great!", groomer: "Newton" },
-  { name: "Tracey C", city: "Jacksonville", state: "FL", date: "27 Mar, 2026", petName: "Fancy", comment: "The best groomer in JAX!", groomer: "Kelly" },
-  { name: "Eric S", city: "Jenkintown", state: "PA", date: "26 Mar, 2026", petName: "Coco", comment: "Christian is great and Coco loves him!", groomer: "Christian" },
-  { name: "dio Y", city: "Boston", state: "MA", date: "25 Mar, 2026", petName: "Prince", comment: "Experience was nice and he was able to see my dog a lil earlier as well. Dog came looking and smelling amazing", groomer: "Derek" },
-  { name: "Tony C", city: "Derwood", state: "MD", date: "24 Mar, 2026", petName: "Oscar", comment: "All of the above", groomer: "Dana" },
+  { name: "Vera G", city: "Bronx", state: "NY", petName: "Maki", comment: "Danny was very kind pleasant and professional! He did a phenomenal job washing my cats Maki and Aslan!", serviceType: "Mobile Grooming" },
+  { name: "Vera G", city: "Bronx", state: "NY", petName: "Maki", comment: "Danny was very kind pleasant and professional! He did a phenomenal job washing my cats Maki and Aslan!", serviceType: "Mobile Grooming" },
+  { name: "Vera G", city: "Bronx", state: "NY", petName: "Maki", comment: "Danny was very kind pleasant and professional! He did a phenomenal job washing my cats Maki and Aslan!", serviceType: "Mobile Grooming" },
+  { name: "Sarah M", city: "Manhattan", state: "NY", petName: "Bella", comment: "Absolutely wonderful service! My dog looks amazing and was so calm throughout the grooming session.", serviceType: "In-Home Grooming" },
+  { name: "John D", city: "Brooklyn", state: "NY", petName: "Max", comment: "Best grooming service we've ever used. The mobile van is so convenient and our pup loves it!", serviceType: "Mobile Grooming" },
 ]
 
 export default function ReviewsSection() {
   const swiperRef = useRef<SwiperType | null>(null)
+  const [activeTab, setActiveTab] = useState<"reviews" | "ratings">("reviews")
 
   return (
     <section className="find-bg-F1F1F3 pt-60-pb-60">
@@ -32,6 +29,24 @@ export default function ReviewsSection() {
         </h2>
         <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center pb-20-px px-3 md:px-0">
           Real reviews from verified pet parents
+        </div>
+
+        {/* Reviews / Ratings tabs */}
+        <div className="flex justify-start md:justify-center mt-10-px">
+          <div className="tab-container ff-inter-regular-400 fs-16-h4 w-200px">
+            <button
+              className={`${activeTab === "reviews" ? "active" : ""} transition-all duration-200`}
+              onClick={() => setActiveTab("reviews")}
+            >
+              Reviews
+            </button>
+            <button
+              className={`${activeTab === "ratings" ? "active" : ""} transition-all duration-200`}
+              onClick={() => setActiveTab("ratings")}
+            >
+              Ratings
+            </button>
+          </div>
         </div>
 
         {/* Rating badge */}
@@ -57,7 +72,7 @@ export default function ReviewsSection() {
             </div>
             <div className="flex items-center border-l pl-3 md:pl-5">
               <div>
-                <div className="ff-inter-semibold fs-24-h2 leading-none">179K+</div>
+                <div className="ff-inter-semibold fs-24-h2 leading-none">200K+</div>
                 <div className="ff-inter-regular-400 font-gray-4A5565 fs-16-h4 pt-2">Pets groomed</div>
               </div>
             </div>
@@ -121,7 +136,7 @@ export default function ReviewsSection() {
                   </div>
 
                   <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 mt-15-px">
-                    {review.groomer} &bull; {review.petName}
+                    {review.serviceType} &bull; {review.petName}
                   </div>
                 </div>
               </SwiperSlide>

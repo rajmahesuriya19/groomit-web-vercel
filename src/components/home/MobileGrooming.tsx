@@ -4,7 +4,7 @@ const features = [
   { icon: `${IMG_BASE}/v7/images/home/in-home.svg`, title: "At your home or curbside", desc: "Choose in-home or mobile grooming" },
   { icon: `${IMG_BASE}/v7/images/home/heart.svg`, title: "Less stress for your pet", desc: "No cages, One on one service" },
   { icon: `${IMG_BASE}/v7/images/home/clock.svg`, title: "Same-day availability", desc: "Find slots that work today" },
-  { icon: `${IMG_BASE}/v7/images/home/star-red.svg`, title: "Top-rated groomers", desc: "Verified, reviewed, and trusted" },
+  { icon: `${IMG_BASE}/v7/images/home/star-red.svg`, title: "top-rated groomers", desc: "Verified, reviewed, and trusted" },
 ]
 
 export default function MobileGrooming() {
@@ -14,7 +14,7 @@ export default function MobileGrooming() {
         <img
           className="responsive-image"
           src={`${IMG_BASE}/v7/images/home/black-dog.png`}
-          alt="Black Dog"
+          alt="Black poodle dog"
         />
         <div>
           <h2 className="ff-inter-semibold fs-32px font-black-2A2A2A text-center md:text-left mb-0">

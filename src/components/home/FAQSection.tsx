@@ -1,6 +1,4 @@
-import { useState } from "react"
-
-const IMG_BASE = "https://raj.dev.groomit.me"
+import { useState, useMemo } from "react"
 
 const faqs = [
   {
@@ -8,7 +6,7 @@ const faqs = [
     a: "Groomit is America's first on-demand, verified pet-grooming marketplace. We connect pet parents with trusted professionals who deliver salon-quality care right at your doorstep. Book instantly, see transparent pricing by ZIP code, and choose between mobile van, in-home, or salon services.",
   },
   {
-    q: "How do I book a grooming?",
+    q: "How do I book a groomer?",
     a: "Enter your address, select your pet's details and service type, and you'll see instant pricing and available times. You can either choose your groomer manually or let the Best Match Algorithm confirm the ideal professional automatically.",
   },
   {
@@ -16,7 +14,7 @@ const faqs = [
     a: "Yes! View nearby groomers, check their photos, experience, and verified reviews, and select your favorite. Most clients start with Best Match for speed, then rebook their preferred groomer next time.",
   },
   {
-    q: "How does pricing work?",
+    q: "How does pricing works?",
     a: "Pricing is fully transparent; it is shown before booking based on your pet's breed, size, and location. Groomers set their own rates, and Groomit adds a small service fee for support and protection. No hidden costs.",
   },
   {
@@ -42,75 +40,74 @@ export default function FAQSection() {
   const [showAll, setShowAll] = useState(false)
   const [search, setSearch] = useState("")
 
-  const initialCount = 5
-  const filteredFaqs = search
-    ? faqs.filter(
-        (faq) =>
-          faq.q.toLowerCase().includes(search.toLowerCase()) ||
-          faq.a.toLowerCase().includes(search.toLowerCase())
+  const filteredFaqs = useMemo(() => {
+    let result = faqs
+    if (search.trim()) {
+      const term = search.toLowerCase()
+      result = result.filter(
+        (f) => f.q.toLowerCase().includes(term) || f.a.toLowerCase().includes(term)
       )
-    : showAll
-      ? faqs
-      : faqs.slice(0, initialCount)
+    }
+    if (!showAll && !search.trim()) {
+      result = result.slice(0, 5)
+    }
+    return result
+  }, [search, showAll])
 
   return (
-    <section 
+    <section
       className="find-bg-F1F1F3 pt-60-pb-60"
       aria-labelledby="faq-heading"
     >
       <div className="container mx-auto px-4">
-        {/* Section Header with SEO-optimized heading */}
+        {/* Section Header */}
         <header className="text-center mb-6">
-          <h2 
+          <h2
             id="faq-heading"
-            className="font-heading font-semibold text-section text-groomit-black mb-2"
+            className="ff-inter-semibold fs-32px font-black-2A2A2A mb-2"
           >
-            Frequently Asked Questions About Pet Grooming
+            {"Questions, Answered"}
           </h2>
-          <p className="text-body text-groomit-gray max-w-2xl mx-auto">
-            Everything you need to know before booking mobile pet grooming, in-home grooming, or salon services
+          <p className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 max-w-2xl mx-auto">
+            Everything you need to know before booking
           </p>
         </header>
 
-        {/* Search */}
-        <div className="max-w-2xl mx-auto">
-          <div className="flex items-center bg-white border border-groomit-border justify-between pr-4 rounded-2xl mt-20-px">
-            <div className="relative form-group">
-              <input
-                type="search"
-                className="input-control border-0 bg-transparent font-body text-base"
-                id="faq-search"
-                placeholder=" "
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                aria-label="Search frequently asked questions"
-              />
-              <label htmlFor="faq-search" className="font-body text-sm floating-label">
-                Search FAQs
-              </label>
-            </div>
-            <img 
-              src={`${IMG_BASE}/v7/images/home/search.svg`} 
-              alt="" 
-              width={22} 
-              height={22}
-              aria-hidden="true"
+        {/* Search FAQs */}
+        <div className="max-w-4xl mx-auto mb-4">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search FAQs"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full border border-groomit-border rounded-2xl px-4 py-3 ff-inter-regular-400 fs-16-h4 bg-white outline-none focus:border-[#FF385C] transition-colors pr-10"
             />
+            <svg
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" strokeWidth="2" />
+              <path d="m21 21-4.3-4.3" strokeWidth="2" strokeLinecap="round" />
+            </svg>
           </div>
         </div>
 
-        {/* FAQ accordion - Using semantic HTML */}
-        <div className="faqbox bg-white border rounded-3xl mt-20-px max-w-4xl mx-auto">
+        {/* FAQ accordion */}
+        <div className="faqbox bg-white border rounded-3xl max-w-4xl mx-auto">
           <div className="faqs-card" role="list">
             {filteredFaqs.map((faq, i) => (
-              <article 
-                key={i} 
+              <article
+                key={faq.q}
                 className={`${i < filteredFaqs.length - 1 ? "border-b border-groomit-border" : ""} pb-5 ${i > 0 ? "pt-5" : ""}`}
                 role="listitem"
               >
                 <h3 className="m-0">
                   <button
-                    className="w-full flex justify-between items-center text-left cursor-pointer bg-transparent border-0 p-0 font-heading text-card-title text-groomit-black hover:text-groomit-red transition-colors"
+                    className="w-full flex justify-between items-center text-left cursor-pointer bg-transparent border-0 p-0 ff-inter-semibold fs-20-h3 font-black-2A2A2A hover:text-[#FF385C] transition-colors"
                     type="button"
                     onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                     aria-expanded={openIndex === i}
@@ -118,15 +115,18 @@ export default function FAQSection() {
                     id={`faq-question-${i}`}
                   >
                     <span className="pr-12">{faq.q}</span>
-                    <svg
-                      className={`w-5 h-5 shrink-0 transition-transform duration-300 text-groomit-gray ${openIndex === i ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                    {/* +/- icon */}
+                    <span className="w-6 h-6 rounded-full border border-groomit-border flex items-center justify-center shrink-0">
+                      {openIndex === i ? (
+                        <svg width="12" height="2" viewBox="0 0 12 2" fill="none" aria-hidden="true">
+                          <path d="M1 1h10" stroke="#2A2A2A" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      ) : (
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                          <path d="M6 1v10M1 6h10" stroke="#2A2A2A" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      )}
+                    </span>
                   </button>
                 </h3>
                 <div
@@ -137,17 +137,23 @@ export default function FAQSection() {
                     openIndex === i ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="text-body text-groomit-gray leading-relaxed m-0">
+                  <p className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 leading-relaxed m-0">
                     {faq.a}
                   </p>
                 </div>
               </article>
             ))}
 
-            {!showAll && !search && faqs.length > initialCount && (
+            {filteredFaqs.length === 0 && (
+              <div className="text-center py-8 ff-inter-regular-400 fs-16-h4 font-gray-4A5565">
+                No FAQs match your search.
+              </div>
+            )}
+
+            {!showAll && !search.trim() && faqs.length > 5 && (
               <div className="flex justify-center mt-15-px pt-4">
                 <button
-                  className="bg-transparent border-0 font-heading font-semibold text-base text-groomit-red cursor-pointer hover:underline"
+                  className="bg-transparent border-0 ff-inter-semibold fs-16 font-red-i cursor-pointer hover:underline p-0"
                   onClick={() => setShowAll(true)}
                   aria-label="Show all frequently asked questions"
                 >

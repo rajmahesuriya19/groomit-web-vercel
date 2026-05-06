@@ -1,22 +1,19 @@
 const serviceAreas = [
   "New York",
   "New Jersey",
-  "Connecticut",
-  "DC - Maryland - Virginia",
-  "Massachusetts",
-  "Pennsylvania",
-  "Florida",
-  "Texas",
   "Colorado",
+  "Texas",
+  "Florida",
   "Georgia",
   "Arizona",
   "North Carolina",
   "Illinois",
+  "Connecticut",
   "Virginia",
+  "Maryland & DC",
+  "Massachusetts",
+  "Pennsylvania",
   "California",
-  "Utah",
-  "Tennessee",
-  "Ohio",
 ]
 
 export default function ServiceAreas() {
