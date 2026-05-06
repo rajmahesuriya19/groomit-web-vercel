@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF385C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M20 6 9 17l-5-5" /></svg>
+const CheckIcon = ({ color = "#FF385C" }: { color?: string }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M20 6 9 17l-5-5" /></svg>
 )
 
 const packages = [
@@ -81,7 +82,7 @@ export default function PricingCards() {
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 mt-auto">
               {pkg.features.map((feature) => (
                 <div key={feature} className="flex items-start gap-2 text-sm text-[#2a2a2a]">
-                  <CheckIcon />
+                  <CheckIcon color={pkg.color === "#9CA3AF" ? "#9CA3AF" : pkg.color === "#22C55E" ? "#22C55E" : "#C8A400"} />
                   <span>{feature}</span>
                 </div>
               ))}
@@ -92,9 +93,9 @@ export default function PricingCards() {
 
       {/* Book Service button */}
       <div className="flex justify-center mt-8">
-        <a href="/guest/booking/start" className="groomit__button inline-block no-underline text-white text-center px-10">
+        <Link to="/guest/booking/start" className="groomit__button inline-block no-underline text-white text-center px-10">
           Book Service
-        </a>
+        </Link>
       </div>
     </section>
   )

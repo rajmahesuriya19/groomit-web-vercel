@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const reviews = [
   {
     text: "Kelly is the greatest groomer. She takes so much care in grooming my dog. It makes me feel good knowing she will take good care of her. Thank you Kelly.",
@@ -53,9 +55,9 @@ export default function Testimonials() {
 
       {/* View All Reviews button */}
       <div className="flex justify-center mt-8">
-        <a href="/reviews" className="groomit__button inline-block no-underline text-white text-center px-8">
+        <Link to="/reviews" className="groomit__button inline-block no-underline text-white text-center px-8">
           View All Reviews
-        </a>
+        </Link>
       </div>
     </section>
   )

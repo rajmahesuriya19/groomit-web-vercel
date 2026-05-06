@@ -1,4 +1,4 @@
-const IMG_BASE = "https://raj.dev.groomit.me"
+const IMG = "https://qa.groomit.me/v7/images"
 
 export default function HeroSection() {
   return (
@@ -10,27 +10,21 @@ export default function HeroSection() {
             <br />
             In-Home Pet Grooming
           </h1>
-          <div className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-[#d9d9d9] border-2 border-white" />
-              ))}
-            </div>
+          <div className="flex items-center gap-3">
+            <img src={`${IMG}/home/pet-group.webp`} alt="Pet Group" className="h-8" />
             <div className="flex items-center gap-1 text-sm text-[#4a5565]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF7631" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-              <span className="font-semibold text-[#2a2a2a]">4.8</span>
+              <span className="font-semibold text-[#2a2a2a]">3.8</span>
+              <img src={`${IMG}/home/star-orange.svg`} alt="Star" className="w-4 h-4" />
               <span>|</span>
-              <span>40.7K reviews</span>
+              <span className="underline">588 Reviews</span>
             </div>
           </div>
         </div>
         <div className="flex-shrink-0">
           <img
-            src={`${IMG_BASE}/v7/images/home/hero-image.png`}
+            src={`${IMG}/pet-grooming-prices/pet-grooming-banner.svg`}
             alt="Groomit mobile grooming van"
-            width={400}
-            height={240}
-            className="w-full max-w-[400px] h-auto object-contain"
+            className="w-full max-w-[440px] h-auto object-contain"
           />
         </div>
       </div>
