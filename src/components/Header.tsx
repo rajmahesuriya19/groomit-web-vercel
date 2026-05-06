@@ -113,7 +113,7 @@ export default function Header() {
                                 </div>
                                 <ul className="hidden lg:flex groomit__dropdownCont list-none p-0 m-0 items-center gap-1">
                                     <li className="nav-item mr-1.25">
-                                        <a href="/guest/booking/start" className="bg-black groomit__button inline-block services-available__bookButton text-white px-5 py-2.5 rounded-full text-sm font-semibold no-underline whitespace-nowrap hover:bg-gray-800 transition-colors">
+                                        <a href="/guest/booking/start" className="bg-[#2A2A2A] inline-block text-white px-5 py-2.5 rounded-full text-sm font-semibold no-underline whitespace-nowrap hover:bg-black transition-colors">
                                             Book Now
                                         </a>
                                     </li>
@@ -123,8 +123,7 @@ export default function Header() {
                                             onClick={() => setProfileOpen(!profileOpen)}
                                             aria-expanded={profileOpen}
                                         >
-                                            <img className="imagethum__75 mr-0.75 object-cover rounded-full" src="https://raj.dev.groomit.me/v7/images/icons/profile-circle.svg" width={30} height={30} alt="Profile" />
-                                            <img className={`transition-transform duration-200 ${profileOpen ? "rotate-180" : ""}`} src="https://raj.dev.groomit.me/v7/images/icons/polygon.svg" width={11} height={7} alt="" />
+                                            <img className="imagethum__75 object-cover rounded-full" src="https://raj.dev.groomit.me/v7/images/icons/profile-circle.svg" width={30} height={30} alt="Profile" />
                                         </button>
                                         {profileOpen && (
                                             <ul className="dropdown-menu groomit__dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg border border-gray-200 min-w-55 py-1 z-50 list-none p-0">
@@ -154,7 +153,10 @@ export default function Header() {
                                     style={{ width: 48, height: 48, borderRadius: 12 }}
                                     onClick={() => setSupportOpen(true)}
                                 >
-                                    <img src="https://raj.dev.groomit.me/v7/images/webapp/icons/support-question.svg" width={24} height={24} alt="Support" className="app-icon" />
+                                    <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="#2A2A2A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                    </svg>
                                 </button>
                             </div>
                         </div>

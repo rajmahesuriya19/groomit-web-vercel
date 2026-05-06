@@ -8,7 +8,7 @@ const faqs = [
     a: "Groomit is America's first on-demand, verified pet-grooming marketplace. We connect pet parents with trusted professionals who deliver salon-quality care right at your doorstep. Book instantly, see transparent pricing by ZIP code, and choose between mobile van, in-home, or salon services.",
   },
   {
-    q: "How do I book a grooming?",
+    q: "How do I book a groomer?",
     a: "Enter your address, select your pet's details and service type, and you'll see instant pricing and available times. You can either choose your groomer manually or let the Best Match Algorithm confirm the ideal professional automatically.",
   },
   {
@@ -16,7 +16,7 @@ const faqs = [
     a: "Yes! View nearby groomers, check their photos, experience, and verified reviews, and select your favorite. Most clients start with Best Match for speed, then rebook their preferred groomer next time.",
   },
   {
-    q: "How does pricing work?",
+    q: "How does pricing works?",
     a: "Pricing is fully transparent; it is shown before booking based on your pet's breed, size, and location. Groomers set their own rates, and Groomit adds a small service fee for support and protection. No hidden costs.",
   },
   {
@@ -40,18 +40,9 @@ const faqs = [
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
-  const [search, setSearch] = useState("")
 
   const initialCount = 5
-  const filteredFaqs = search
-    ? faqs.filter(
-        (faq) =>
-          faq.q.toLowerCase().includes(search.toLowerCase()) ||
-          faq.a.toLowerCase().includes(search.toLowerCase())
-      )
-    : showAll
-      ? faqs
-      : faqs.slice(0, initialCount)
+  const filteredFaqs = showAll ? faqs : faqs.slice(0, initialCount)
 
   return (
     <section 
@@ -59,45 +50,18 @@ export default function FAQSection() {
       aria-labelledby="faq-heading"
     >
       <div className="container mx-auto px-4">
-        {/* Section Header with SEO-optimized heading */}
+        {/* Section Header */}
         <header className="text-center mb-6">
           <h2 
             id="faq-heading"
             className="font-heading font-semibold text-section text-groomit-black mb-2"
           >
-            Frequently Asked Questions About Pet Grooming
+            {"Questions, Answered"}
           </h2>
           <p className="text-body text-groomit-gray max-w-2xl mx-auto">
-            Everything you need to know before booking mobile pet grooming, in-home grooming, or salon services
+            Everything you need to know before booking
           </p>
         </header>
-
-        {/* Search */}
-        <div className="max-w-2xl mx-auto">
-          <div className="flex items-center bg-white border border-groomit-border justify-between pr-4 rounded-2xl mt-20-px">
-            <div className="relative form-group">
-              <input
-                type="search"
-                className="input-control border-0 bg-transparent font-body text-base"
-                id="faq-search"
-                placeholder=" "
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                aria-label="Search frequently asked questions"
-              />
-              <label htmlFor="faq-search" className="font-body text-sm floating-label">
-                Search FAQs
-              </label>
-            </div>
-            <img 
-              src={`${IMG_BASE}/v7/images/home/search.svg`} 
-              alt="" 
-              width={22} 
-              height={22}
-              aria-hidden="true"
-            />
-          </div>
-        </div>
 
         {/* FAQ accordion - Using semantic HTML */}
         <div className="faqbox bg-white border rounded-3xl mt-20-px max-w-4xl mx-auto">
@@ -144,7 +108,7 @@ export default function FAQSection() {
               </article>
             ))}
 
-            {!showAll && !search && faqs.length > initialCount && (
+            {!showAll && faqs.length > initialCount && (
               <div className="flex justify-center mt-15-px pt-4">
                 <button
                   className="bg-transparent border-0 font-heading font-semibold text-base text-groomit-red cursor-pointer hover:underline"

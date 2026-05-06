@@ -34,21 +34,26 @@ export default function RecurringGrooming() {
           </div>
 
           {/* Prepaid */}
-          <div className="bg-white border border-red w-full rounded-2xl p-20 mt-0">
+          <div className="bg-white border border-red w-full rounded-2xl p-20 mt-0 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="ff-inter-semibold fs-20">Prepaid</div>
               <div className="ff-inter-semibold text-sm bg-red text-white px-3 py-1 rounded-lg">Best Value</div>
             </div>
-            <ul className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 custom-red-bullets mb-0">
-              <li className="pb-10-px pt-20-px">Auto-scheduled</li>
-              <li className="pb-10-px">Price locked</li>
-              <li className="pb-10-px">Pay upfront &amp; save</li>
-              <li>Unused visits refundable</li>
-            </ul>
+            <div className="flex">
+              <ul className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 custom-red-bullets mb-0">
+                <li className="pb-10-px pt-20-px">Auto-scheduled</li>
+                <li className="pb-10-px">Price locked</li>
+                <li className="pb-10-px">Pay upfront &amp; save</li>
+                <li>Unused visits refundable</li>
+              </ul>
+              <div className="hidden md:block ml-auto shrink-0">
+                <img className="responsive-image" alt="" src={`${IMG_BASE}/v7/images/home/gray-dog.png`} width={120} height={97} />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="text-right hidden md:block">
+        <div className="text-right hidden md:hidden">
           <img className="responsive-image" alt="" src={`${IMG_BASE}/v7/images/home/gray-dog.png`} width={157} height={127} />
         </div>
       </div>

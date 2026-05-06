@@ -8,18 +8,10 @@ import "swiper/css/navigation"
 const IMG_BASE = "https://raj.dev.groomit.me"
 
 const groomers = [
-  { name: "Christopher P.", rating: 4.9, reviews: 312, type: "Mobile Van", pet: "Dog & Cat", area: "Queens", experience: "8+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Lisa M.", rating: 5.0, reviews: 245, type: "In-Home", pet: "Dog & Cat", area: "Hudson", experience: "5+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Diego A.", rating: 4.9, reviews: 198, type: "Mobile Van", pet: "Dog & Cat", area: "Nassau", experience: "10+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Ocean F.", rating: 4.8, reviews: 156, type: "In-Home", pet: "Dog", area: "Prince George's", experience: "6+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Kelly C.", rating: 4.9, reviews: 287, type: "Mobile Van", pet: "Dog & Cat", area: "Middlesex", experience: "7+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Mary R.", rating: 5.0, reviews: 201, type: "In-Home", pet: "Dog & Cat", area: "Kings", experience: "4+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Kristofer B.", rating: 5.0, reviews: 178, type: "Mobile Van", pet: "Dog", area: "New Haven", experience: "5+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Newton C.", rating: 5.0, reviews: 134, type: "In-Home", pet: "Dog & Cat", area: "Travis", experience: "8+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Dana A.", rating: 4.9, reviews: 210, type: "Mobile Van", pet: "Cat", area: "Montgomery", experience: "6+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Derek K.", rating: 5.0, reviews: 189, type: "In-Home", pet: "Dog & Cat", area: "District of Columbia", experience: "9+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Jatnna S.", rating: 5.0, reviews: 167, type: "Mobile Van", pet: "Dog & Cat", area: "Westchester", experience: "7+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
-  { name: "Pingping W.", rating: 5.0, reviews: 143, type: "In-Home", pet: "Dog", area: "Mercer", experience: "5+ yrs experience", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
+  { name: "Sarah M.", rating: 4.8, reviews: 120, type: "Mobile", pet: "Dogs", area: "Brooklyn", experience: "4 yrs experience", nextAvailable: "Next available today", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
+  { name: "Perry J.", rating: 4.9, reviews: 312, type: "In-Home", pet: "Cats", area: "Queens", experience: "Cats & senior pets", nextAvailable: "Tomorrow at 9:00 AM", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
+  { name: "Sarah M.", rating: 4.8, reviews: 120, type: "Mobile", pet: "Dogs", area: "Brooklyn", experience: "4 yrs experience", nextAvailable: "Next available today", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
+  { name: "Perry J.", rating: 4.9, reviews: 312, type: "In-Home", pet: "Cats", area: "Queens", experience: "Cats & senior pets", nextAvailable: "Tomorrow at 9:00 AM", image: `${IMG_BASE}/v7/images/webapp/icons/profile-squre.svg` },
 ]
 
 export default function GroomersSection() {
@@ -63,8 +55,8 @@ export default function GroomersSection() {
           loop={true}
           className="groomer-swiper"
         >
-          {groomers.map((groomer) => (
-            <SwiperSlide key={groomer.name}>
+          {groomers.map((groomer, idx) => (
+            <SwiperSlide key={idx}>
               <div className="border rounded-2xl p-3 bg-white h-full">
                 <div className="flex items-center">
                   <img
@@ -95,6 +87,10 @@ export default function GroomersSection() {
                 <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 mt-15-px">
                   <img src={`${IMG_BASE}/v7/images/home/location-gray.svg`} alt="location" width={18} height={18} className="inline mr-2" />
                   {groomer.area} &bull; {groomer.experience}
+                </div>
+
+                <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 mt-10-px">
+                  {groomer.nextAvailable}
                 </div>
 
                 <button className="bg-transparent mt-15-px border-0 ff-inter-semibold fs-16-h4 font-red-i cursor-pointer p-0">

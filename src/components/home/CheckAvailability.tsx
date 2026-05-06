@@ -26,9 +26,9 @@ export default function CheckAvailability() {
               {"Grooming in "}<span data-grooming-location="">[City]</span>
             </h2>
 
-            {/* ZIP input */}
-            <div className="zip-availability-content">
-              <div className="flex items-center border border-groomit-border bg-white justify-between pr-4 rounded-2xl mt-20-px w-65 input-bg">
+            {/* ZIP input + Pet type tabs on same row */}
+            <div className="zip-availability-content flex items-center gap-4 mt-20-px">
+              <div className="flex items-center border border-groomit-border bg-white justify-between pr-4 rounded-2xl w-65 input-bg">
                 <div className="relative form-group">
                   <input
                     className="input-control border-0 bg-transparent ff-inter-regular-400 fs-16"
@@ -53,7 +53,7 @@ export default function CheckAvailability() {
 
               {/* Pet type tabs */}
               <div className="tab-group" data-no-swipe="">
-                <div className="tab-container ff-inter-regular-400 fs-16-h4 w-200px tab-position">
+                <div className="tab-container ff-inter-regular-400 fs-16-h4 w-200px">
                   {petTypes.map((pt) => (
                     <button
                       key={pt.id}
