@@ -2,19 +2,12 @@ import { useState, useCallback } from "react"
 
 const IMG_BASE = "https://raj.dev.groomit.me"
 
-const serviceTypes = [
-  { id: "mobile-van", label: "Mobile Spa" },
-  { id: "in-home", label: "In-Home" },
-  { id: "salon", label: "Salon" },
-]
-
 const petTypes = [
   { id: "dog", label: "Dog" },
   { id: "cat", label: "Cat" },
 ]
 
 export default function CheckAvailability() {
-  const [activeServiceType, setActiveServiceType] = useState("mobile-van")
   const [activePetType, setActivePetType] = useState("dog")
   const [zip, setZip] = useState("")
 
@@ -30,28 +23,12 @@ export default function CheckAvailability() {
           <div className="w-95per">
             <h2 className="ff-inter-semibold fs-32px leading-snug mb-0">
               {"Check Availability for Dog & Cat"}<br className="hidden md:block" />
-              {"Grooming in "}<span data-grooming-location="">Columbus</span>
+              {"Grooming in "}<span data-grooming-location="">[City]</span>
             </h2>
-
-            {/* Service type tabs */}
-            <div className="tab-group mx-0 md:mx-3">
-              <div className="tab-container ff-inter-regular-400 fs-16-h4 w-full mt-20-px">
-                {serviceTypes.map((st) => (
-                  <button
-                    key={st.id}
-                    className={`${activeServiceType === st.id ? "active" : ""} transition-all duration-200`}
-                    data-service-type={st.id}
-                    onClick={() => setActiveServiceType(st.id)}
-                  >
-                    {st.label}
-                  </button>
-                ))}
-              </div>
-            </div>
 
             {/* ZIP input */}
             <div className="zip-availability-content">
-              <div className="flex items-center border border-groomit-border bg-white justify-between pr-4 rounded-2xl mt-10-px w-65 input-bg">
+              <div className="flex items-center border border-groomit-border bg-white justify-between pr-4 rounded-2xl mt-20-px w-65 input-bg">
                 <div className="relative form-group">
                   <input
                     className="input-control border-0 bg-transparent ff-inter-regular-400 fs-16"
@@ -88,32 +65,6 @@ export default function CheckAvailability() {
                     </button>
                   ))}
                 </div>
-
-                {/* Time slots */}
-                <div className="tab-content">
-                  <div className="content-box active" id="availabilityBox">
-                    <div className="ff-inter-regular-400 fs-16 flex items-center">
-                      <div className="green-dot mr-2"></div>Available from today
-                    </div>
-                    <div className="flex items-center gap-10-px mt-10-px">
-                      {["8 - 9 am", "11 am - 1 pm", "2 - 4 pm"].map((slot) => (
-                        <div key={slot} className="time-slot-div ff-inter-regular-400 fs-16-h4 py-3 rounded-2xl text-center w-full cursor-pointer">
-                          {slot}
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="flex justify-center">
-                      <a
-                        href="/pet-grooming-prices"
-                        className="bg-light-blue mt-15-px border-0 bg-white ff-inter-semibold fs-16-h4 font-red-i no-underline inline-flex items-center gap-1"
-                      >
-                        See Price Now
-                        <img src={`${IMG_BASE}/v7/images/home/arrow-red.svg`} alt="arrow" width={16} height={16} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -149,7 +100,7 @@ export default function CheckAvailability() {
         <div className="hidden md:flex w-full">
           <img
             src={`${IMG_BASE}/v7/images/home/cat-dog.png`}
-            alt="Cat Dog"
+            alt="Cat and dog together"
             width={605}
             height={489}
             className="responsive-image"

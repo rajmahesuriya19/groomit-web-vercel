@@ -28,7 +28,7 @@ export default function GroomersSection() {
   return (
     <div className="container mx-auto px-4 pt-60-pb-60">
       <h2 className="ff-inter-semibold fs-32px font-black-2A2A2A text-left md:text-center mb-0">
-        Professional Dog and Cat Groomers Near You
+        Professional Groomers Near You
       </h2>
       <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center mb-4 mt-10-px">
         Verified, reviewed, and ready to book

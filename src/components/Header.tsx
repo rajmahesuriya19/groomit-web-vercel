@@ -36,7 +36,7 @@ export default function Header() {
                                 <div className="flex items-center gap-2 w-full">
                                     <img src="https://raj.dev.groomit.me/v7/images/home/star-orange.svg" width={21} height={21} alt="Star" />
                                     <a href="/reviews" className="text-black no-underline">
-                                        <div className="ff-inter-bold fs-16-h4">4.8 (45,627)</div>
+                                        <div className="ff-inter-bold fs-16-h4">4.9 (42.8K)</div>
                                     </a>
                                 </div>
                                 <button
@@ -79,10 +79,10 @@ export default function Header() {
                                         </div>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/pet-grooming-prices">{"Services & Pricing"}</a>
+                                        <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/pet-grooming-prices">{"Service & Pricing"}</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/recurring-booking">Recurring</a>
+                                        <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/recurring-booking">Recurring Booking</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/location">Locations</a>
@@ -90,18 +90,15 @@ export default function Header() {
                                     <li className="nav-item">
                                         <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" target="_blank" rel="noreferrer" href="https://blog.groomit.me/">Blog</a>
                                     </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link groomit__a groomit__a--navLink no-underline text-black hover:text-[#FF385C] transition-colors text-sm font-medium" href="/dog-groomer-jobs">Join Groomit</a>
+                                    </li>
                                     {/* Mobile-only auth links */}
                                     <li className="nav-item block md:hidden">
                                         <a className="nav-link groomit__a groomit__a--navLink no-underline text-black text-sm font-medium" href="/user/log-in">Log In</a>
                                     </li>
                                     <li className="nav-item block md:hidden">
                                         <a className="nav-link groomit__a groomit__a--navLink no-underline text-black text-sm font-medium" href="/guest/signup/start">Sign Up</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link groomit__a groomit__a--navLink groomit__colorRed no-underline text-[#FF385C] font-semibold text-sm" target="_blank" rel="noreferrer" href="/dog-groomer-jobs">Apply as Groomer</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link groomit__a groomit__a--navLink groomit__colorRed no-underline text-[#FF385C] font-semibold text-sm" target="_blank" rel="noreferrer" href="/salon-groom">Apply as Salon</a>
                                     </li>
                                 </ul>
                             </div>
@@ -111,7 +108,7 @@ export default function Header() {
                                 <div className="flex items-center gap-2">
                                     <img src="https://raj.dev.groomit.me/v7/images/home/star-orange.svg" width={21} height={21} alt="Star" />
                                     <a href="/reviews" className="text-black no-underline">
-                                        <div className="ff-inter-bold fs-16-h4 whitespace-nowrap">4.8 (45,627)</div>
+                                        <div className="ff-inter-bold fs-16-h4 whitespace-nowrap">4.9 (42.8K)</div>
                                     </a>
                                 </div>
                                 <ul className="hidden lg:flex groomit__dropdownCont list-none p-0 m-0 items-center gap-1">

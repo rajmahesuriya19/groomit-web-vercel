@@ -23,12 +23,12 @@ const footerLinks = {
         { label: "About Us", href: "/about-us" },
         { label: "Service & Pricing", href: "/pet-grooming-prices" },
         { label: "Recurring Booking", href: "/recurring-booking" },
-        { label: "Location", href: "/service-areas" },
+        { label: "Locations", href: "/service-areas" },
     ],
     "For Pet Owners": [
         { label: "Help Center", href: "/help" },
         { label: "Cancellation & Rescheduling Policy", href: "/customer-cancellation-policy" },
-        { label: "Gift Card", href: "/user/gift-cards" },
+        { label: "Gift Cards", href: "/user/gift-cards" },
         { label: "Our Blog", href: "https://blog.groomit.me/", external: true },
     ],
     Company: [
@@ -106,8 +106,17 @@ export default function Footer() {
                         <div className="ff-inter-semibold text-white fs-32px">Need help?</div>
                         <div className="text-white ff-inter-regular-400 fs-16-h4">Get support in minutes</div>
 
-                        <a href="mailto:help@groomit.me" className="no-underline mt-20-px">
-                            <button className="font-red-i ff-inter-semibold fs-16 red-button-footer border-0 bg-white flex items-center justify-center cursor-pointer">
+                        <a href="https://groomit.me/help" className="no-underline mt-20-px w-full max-w-[240px]">
+                            <button className="font-red-i ff-inter-semibold fs-16 border-0 bg-groomit-red text-white flex items-center justify-center cursor-pointer w-full rounded-xl py-3 hover:bg-[#E62E4F] transition-colors">
+                                <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                Chat with us
+                            </button>
+                        </a>
+
+                        <a href="mailto:help@groomit.me" className="no-underline mt-10-px w-full max-w-[240px]">
+                            <button className="font-red-i ff-inter-semibold fs-16 red-button-footer border border-[#E5E7EB] bg-white flex items-center justify-center cursor-pointer w-full rounded-xl py-3 hover:bg-gray-50 transition-colors">
                                 <img src={`${IMG_BASE}/v7/images/home/mail-red.svg`} width={24} height={24} alt="Mail" className="mr-2" />
                                 help@groomit.me
                             </button>
@@ -120,7 +129,7 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="flex justify-center mt-10-px text-white fs-16-h4 ff-inter-regular-400">
-                            Call Us During 8am to 8pm EST
+                            Call Us During 9am to 8pm EST
                         </div>
 
                         {/* Social links */}

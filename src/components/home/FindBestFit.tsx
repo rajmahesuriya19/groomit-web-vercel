@@ -25,10 +25,10 @@ const serviceOptions = [
     icon: `${IMG_BASE}/v7/images/home/salon.svg`,
     title: "Salon",
     features: [
-      "Comfortable salon environment",
-      "Easy drop-off and pick-up",
-      "Flexible timing for busy days",
-      "Fast online booking with Groomit",
+      "Ideal for pets comfortable with salon",
+      "Structured grooming environment",
+      "Access to specialized tools",
+      "Book easily through Groomit",
     ],
   },
 ]

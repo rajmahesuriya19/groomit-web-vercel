@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Autoplay } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
@@ -21,6 +21,7 @@ const reviews = [
 
 export default function ReviewsSection() {
   const swiperRef = useRef<SwiperType | null>(null)
+  const [activeTab, setActiveTab] = useState<"reviews" | "ratings">("reviews")
 
   return (
     <section className="find-bg-F1F1F3 pt-60-pb-60">
@@ -32,6 +33,24 @@ export default function ReviewsSection() {
         </h2>
         <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center pb-20-px px-3 md:px-0">
           Real reviews from verified pet parents
+        </div>
+
+        {/* Reviews / Ratings tabs */}
+        <div className="flex justify-start md:justify-center mt-10-px">
+          <div className="tab-container ff-inter-regular-400 fs-16-h4 w-200px">
+            <button
+              className={`${activeTab === "reviews" ? "active" : ""} transition-all duration-200`}
+              onClick={() => setActiveTab("reviews")}
+            >
+              Reviews
+            </button>
+            <button
+              className={`${activeTab === "ratings" ? "active" : ""} transition-all duration-200`}
+              onClick={() => setActiveTab("ratings")}
+            >
+              Ratings
+            </button>
+          </div>
         </div>
 
         {/* Rating badge */}
