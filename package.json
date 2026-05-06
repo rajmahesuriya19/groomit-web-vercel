@@ -37,6 +37,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "swiper": "^12.1.4",
+    "tailwindcss": "^4.2.4",
     "yup": "^1.0.2"
   },
   "devDependencies": {

@@ -79,7 +79,7 @@
   }
   
   body {
-    font-family: 'FilsonPro', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     @apply bg-background text-foreground;
     line-height: 1.6;
   }
@@ -170,7 +170,7 @@
 }
 
 @utility font-body {
-  font-family: 'FilsonPro', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Legacy utilities - mapped to new system for backward compatibility */

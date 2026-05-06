@@ -1,21 +1,22 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-const IMG_BASE = "https://raj.dev.groomit.me"
+const IMG = "https://qa.groomit.me/v7/images"
 
 const brandLogos = [
-    { href: "https://www.forbes.com/sites/yolarobert1/2021/04/23/how-anna-zege-made-grooming-more-convenient-for-pet-owners-with-groomit/?sh=72d978581117", src: `${IMG_BASE}/v7/images/home/forbes.png`, alt: "Forbes", width: 100, hideOnMobile: true },
-    { href: "https://www.google.com/maps/place/GROOMIT+-+In-Home%2FMobile+Pet+Grooming+On+Demand/@40.9211298,-74.5596784,9z/data=!3m1!4b1!4m6!3m5!1s0x89c259618927841f:0x61a3bbaedbea24c6!8m2!3d40.9219696!4d-73.9003419!16s%2Fg%2F11hbghj4cb?entry=tts", src: `${IMG_BASE}/v7/images/home/google-review.png`, alt: "Google Reviews", width: 80 },
-    { href: "https://www.nbcnewyork.com/video/on-air/as-seen-on/on-demand-apps_new-york/1822072/", src: `${IMG_BASE}/v7/images/home/nbc.png`, alt: "NBC", width: 43 },
-    { href: "https://www.nytimes.com/2020/07/23/style/coronavirus-manicures-haircuts-tattoos-dog-groomer-at-home.html", src: `${IMG_BASE}/v7/images/home/the-newyork.png`, alt: "New York Times", width: 228 },
-    { href: "https://issuu.com/newyorklifestylesmagazine/docs/plm_mar19", src: `${IMG_BASE}/v7/images/home/lifestyle.png`, alt: "New York Lifestyles", width: 170, hideOnMobile: true },
+    { href: "https://www.forbes.com/sites/yolarobert1/2021/04/23/how-anna-zege-made-grooming-more-convenient-for-pet-owners-with-groomit/?sh=72d978581117", src: `${IMG}/home/forbes.png`, alt: "Forbes", width: 100, hideOnMobile: true },
+    { href: "https://www.google.com/maps/place/GROOMIT+-+In-Home%2FMobile+Pet+Grooming+On+Demand/@40.9211298,-74.5596784,9z/data=!3m1!4b1!4m6!3m5!1s0x89c259618927841f:0x61a3bbaedbea24c6!8m2!3d40.9219696!4d-73.9003419!16s%2Fg%2F11hbghj4cb?entry=tts", src: `${IMG}/home/google-review.png`, alt: "Google Reviews", width: 80 },
+    { href: "https://www.nbcnewyork.com/video/on-air/as-seen-on/on-demand-apps_new-york/1822072/", src: `${IMG}/home/nbc.png`, alt: "NBC", width: 43 },
+    { href: "https://www.nytimes.com/2020/07/23/style/coronavirus-manicures-haircuts-tattoos-dog-groomer-at-home.html", src: `${IMG}/home/the-newyork.png`, alt: "New York Times", width: 228 },
+    { href: "https://issuu.com/newyorklifestylesmagazine/docs/plm_mar19", src: `${IMG}/home/lifestyle.png`, alt: "New York Lifestyles", width: 170, hideOnMobile: true },
 ]
 
 const socialLinks = [
-    { href: "https://www.facebook.com/groomitapp/", src: `${IMG_BASE}/v7/images/home/facebook-round.svg`, alt: "Facebook" },
-    { href: "https://www.instagram.com/groomitapp/", src: `${IMG_BASE}/v7/images/home/instagram-round.svg`, alt: "Instagram" },
-    { href: "https://www.youtube.com/@groomitapp", src: `${IMG_BASE}/v7/images/home/youtube-round.svg`, alt: "Youtube" },
-    { href: "https://www.linkedin.com/company/groomit-llc/", src: `${IMG_BASE}/v7/images/home/in-round.svg`, alt: "LinkedIn" },
-    { href: "https://x.com/groomitapp", src: `${IMG_BASE}/v7/images/home/x-round.svg`, alt: "X" },
+    { href: "https://www.facebook.com/groomitapp/", src: `${IMG}/home/facebook-round.svg`, alt: "Facebook" },
+    { href: "https://www.instagram.com/groomitapp/", src: `${IMG}/home/instagram-round.svg`, alt: "Instagram" },
+    { href: "https://www.youtube.com/@groomitapp", src: `${IMG}/home/youtube-round.svg`, alt: "Youtube" },
+    { href: "https://www.linkedin.com/company/groomit-llc/", src: `${IMG}/home/in-round.svg`, alt: "LinkedIn" },
+    { href: "https://x.com/groomitapp", src: `${IMG}/home/x-round.svg`, alt: "X" },
 ]
 
 const footerLinks = {
@@ -23,12 +24,12 @@ const footerLinks = {
         { label: "About Us", href: "/about-us" },
         { label: "Service & Pricing", href: "/pet-grooming-prices" },
         { label: "Recurring Booking", href: "/recurring-booking" },
-        { label: "Locations", href: "/service-areas" },
+        { label: "Location", href: "/service-areas" },
     ],
     "For Pet Owners": [
         { label: "Help Center", href: "/help" },
         { label: "Cancellation & Rescheduling Policy", href: "/customer-cancellation-policy" },
-        { label: "Gift Cards", href: "/user/gift-cards" },
+        { label: "Gift Card", href: "/user/gift-cards" },
         { label: "Our Blog", href: "https://blog.groomit.me/", external: true },
     ],
     Company: [
@@ -44,31 +45,29 @@ const footerLinks = {
     ],
 }
 
+function FooterLink({ href, external, children, className }: { href: string; external?: boolean; children: React.ReactNode; className?: string }) {
+    if (external) {
+        return <a href={href} target="_blank" rel="noreferrer" className={className}>{children}</a>
+    }
+    return <Link to={href} className={className}>{children}</Link>
+}
+
 function MobileAccordion({ title, links }: { title: string; links: { label: string; href: string; external?: boolean }[] }) {
     const [open, setOpen] = useState(title === "About")
 
     return (
         <div className="bg-transparent border-0">
             <h2>
-                <button
-                    className="custom-toggle"
-                    onClick={() => setOpen(!open)}
-                    type="button"
-                >
+                <button className="custom-toggle" onClick={() => setOpen(!open)} type="button">
                     <span className="ff-inter-semibold fs-16-h4 text-white">{title}</span>
                 </button>
             </h2>
             {open && (
                 <div className="custom-body ff-inter-regular-400 fs-16-h4">
                     {links.map((link) => (
-                        <a
-                            key={link.label}
-                            className="text-white no-underline leading-none"
-                            href={link.href}
-                            {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                        >
+                        <FooterLink key={link.label} href={link.href} external={link.external} className="text-white no-underline leading-none">
                             {link.label}
-                        </a>
+                        </FooterLink>
                     ))}
                 </div>
             )}
@@ -84,13 +83,7 @@ export default function Footer() {
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between py-3 md:py-4 items-center">
                         {brandLogos.map((logo) => (
-                            <a
-                                key={logo.alt}
-                                href={logo.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={logo.hideOnMobile ? "hidden md:block" : "block"}
-                            >
+                            <a key={logo.alt} href={logo.href} target="_blank" rel="noopener noreferrer" className={logo.hideOnMobile ? "hidden md:block" : "block"}>
                                 <img src={logo.src} alt={logo.alt} width={logo.width} height={40} className="mt-0 md:mt-3" />
                             </a>
                         ))}
@@ -106,30 +99,21 @@ export default function Footer() {
                         <div className="ff-inter-semibold text-white fs-32px">Need help?</div>
                         <div className="text-white ff-inter-regular-400 fs-16-h4">Get support in minutes</div>
 
-                        <a href="https://groomit.me/help" className="no-underline mt-20-px w-full max-w-[240px]">
-                            <button className="font-red-i ff-inter-semibold fs-16 border-0 bg-groomit-red text-white flex items-center justify-center cursor-pointer w-full rounded-xl py-3 hover:bg-[#E62E4F] transition-colors">
-                                <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                </svg>
-                                Chat with us
-                            </button>
-                        </a>
-
-                        <a href="mailto:help@groomit.me" className="no-underline mt-10-px w-full max-w-[240px]">
+                        <a href="mailto:help@groomit.me" className="no-underline mt-20-px w-full max-w-[240px]">
                             <button className="font-red-i ff-inter-semibold fs-16 red-button-footer border border-[#E5E7EB] bg-white flex items-center justify-center cursor-pointer w-full rounded-xl py-3 hover:bg-gray-50 transition-colors">
-                                <img src={`${IMG_BASE}/v7/images/home/mail-red.svg`} width={24} height={24} alt="Mail" className="mr-2" />
+                                <img src={`${IMG}/home/mail-red.svg`} width={24} height={24} alt="Mail" className="mr-2" />
                                 help@groomit.me
                             </button>
                         </a>
 
                         <div className="flex justify-center mt-10-px">
                             <a href="tel:+18883967170" className="flex ff-inter-semibold fs-16 mt-10-px text-white no-underline">
-                                <img src={`${IMG_BASE}/v7/images/webapp/icons/call-white.svg`} height={24} width={24} alt="Call to Book" className="mr-2" />
+                                <img src={`${IMG}/webapp/icons/call-white.svg`} height={24} width={24} alt="Call to Book" className="mr-2" />
                                 +1(888) 396 7170
                             </a>
                         </div>
                         <div className="flex justify-center mt-10-px text-white fs-16-h4 ff-inter-regular-400">
-                            Call Us During 9am to 8pm EST
+                            Call Us During 8am to 8pm EST
                         </div>
 
                         {/* Social links */}
@@ -148,14 +132,9 @@ export default function Footer() {
                             <div key={title} className="flex flex-col footer-links ff-inter-regular-400 fs-16-h4 gap-14-px">
                                 <h4 className="ff-inter-semibold leading-none text-white fs-16-h4">{title}</h4>
                                 {links.map((link) => (
-                                    <a
-                                        key={link.label}
-                                        className="text-white no-underline leading-none"
-                                        href={link.href}
-                                        {...("external" in link && link.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                                    >
+                                    <FooterLink key={link.label} href={link.href} external={"external" in link ? link.external : false} className="text-white no-underline leading-none">
                                         {link.label}
-                                    </a>
+                                    </FooterLink>
                                 ))}
                             </div>
                         ))}
@@ -175,15 +154,15 @@ export default function Footer() {
                 {/* Bottom links */}
                 <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-0 text-center">
                     <div className="footer-links-bottom ff-inter-regular-400 fs-16-h4">
-                        <a className="text-white no-underline" href="/terms">Terms of Service</a>
+                        <Link className="text-white no-underline" to="/terms">Terms of Service</Link>
                         <span className="text-gray-500">|</span>
-                        <a className="text-white no-underline" href="/terms-privacy">Privacy Policy</a>
+                        <Link className="text-white no-underline" to="/terms-privacy">Privacy Policy</Link>
                         <span className="text-gray-500">|</span>
-                        <a className="text-white no-underline" href="/terms-privacy#cookies-policy">Cookies Policy</a>
+                        <Link className="text-white no-underline" to="/terms-privacy#cookies-policy">Cookies Policy</Link>
                         <span className="text-gray-500">|</span>
-                        <a className="text-white no-underline" href="/terms-privacy#acceptable-use-of-policy">Acceptable Use of Policy</a>
+                        <Link className="text-white no-underline" to="/terms-privacy#acceptable-use-of-policy">Acceptable Use of Policy</Link>
                         <span className="text-gray-500">|</span>
-                        <a className="text-white no-underline" href="/accessibility">Accessibility</a>
+                        <Link className="text-white no-underline" to="/accessibility">Accessibility</Link>
                     </div>
                     <div className="ff-inter-regular-400 fs-16-h4 text-white mt-3 md:mt-0">
                         &copy;2026 Groomit, Inc. All rights reserved.

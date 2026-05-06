@@ -30,7 +30,7 @@ export const colors = {
 export const fontFamily = {
   filson: ['FilsonPro', 'ui-sans-serif', 'system-ui', 'sans-serif'],
   inter:  ['Inter',     'ui-sans-serif', 'system-ui', 'sans-serif'],
-  sans:   ['FilsonPro', 'Inter',         'ui-sans-serif', 'system-ui', 'sans-serif'],
+  sans:   ['Inter',     'ui-sans-serif', 'system-ui', 'sans-serif'],
 } as const
 
 // ─── Tailwind Config ──────────────────────────────────────────────────────────
