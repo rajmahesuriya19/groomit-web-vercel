@@ -55,33 +55,30 @@ export default function FAQSection() {
   }, [search, showAll])
 
   return (
-    <section
-      className="find-bg-F1F1F3 pt-60-pb-60"
-      aria-labelledby="faq-heading"
-    >
+    <section className="bg-[#F7F8FA] py-10 md:py-14" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <header className="text-center mb-6">
+        <header className="text-left md:text-center mb-6">
           <h2
             id="faq-heading"
-            className="ff-inter-semibold fs-32px font-black-2A2A2A mb-2"
+            className="font-semibold text-2xl md:text-[32px] text-[#1A1A1A] mb-2"
           >
-            {"Questions, Answered"}
+            Questions, Answered
           </h2>
-          <p className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 max-w-2xl mx-auto">
+          <p className="text-[#4A5565] text-base max-w-2xl md:mx-auto">
             Everything you need to know before booking
           </p>
         </header>
 
         {/* Search FAQs */}
-        <div className="max-w-4xl mx-auto mb-4">
+        <div className="max-w-4xl mx-auto mb-5">
           <div className="relative">
             <input
               type="text"
               placeholder="Search FAQs"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full border border-groomit-border rounded-2xl px-4 py-3 ff-inter-regular-400 fs-16-h4 bg-white outline-none focus:border-[#FF385C] transition-colors pr-10"
+              className="w-full border border-[#E5E7EB] rounded-xl px-4 py-3.5 text-base bg-white outline-none focus:border-[#FF385C] focus:ring-2 focus:ring-[#FF385C]/10 transition-all pr-12"
             />
             <svg
               className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9CA3AF]"
@@ -97,29 +94,28 @@ export default function FAQSection() {
         </div>
 
         {/* FAQ accordion */}
-        <div className="faqbox bg-white border rounded-3xl max-w-4xl mx-auto">
-          <div className="faqs-card" role="list">
+        <div className="bg-white border border-[#E5E7EB] rounded-2xl md:rounded-3xl max-w-4xl mx-auto p-4 md:p-6">
+          <div role="list">
             {filteredFaqs.map((faq, i) => (
               <article
                 key={faq.q}
-                className={`${i < filteredFaqs.length - 1 ? "border-b border-groomit-border" : ""} pb-5 ${i > 0 ? "pt-5" : ""}`}
+                className={`${i < filteredFaqs.length - 1 ? "border-b border-[#E5E7EB]" : ""} py-4 first:pt-0 last:pb-0`}
                 role="listitem"
               >
                 <h3 className="m-0">
                   <button
-                    className="w-full flex justify-between items-center text-left cursor-pointer bg-transparent border-0 p-0 ff-inter-semibold fs-20-h3 font-black-2A2A2A hover:text-[#FF385C] transition-colors"
+                    className="w-full flex justify-between items-start gap-4 text-left cursor-pointer bg-transparent border-0 p-0 font-semibold text-base md:text-lg text-[#1A1A1A] hover:text-[#FF385C] transition-colors"
                     type="button"
                     onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
                     aria-expanded={openIndex === i}
                     aria-controls={`faq-answer-${i}`}
                     id={`faq-question-${i}`}
                   >
-                    <span className="pr-12">{faq.q}</span>
-                    {/* +/- icon */}
-                    <span className="w-6 h-6 rounded-full border border-groomit-border flex items-center justify-center shrink-0">
+                    <span className="flex-1">{faq.q}</span>
+                    <span className={`w-7 h-7 rounded-full border border-[#E5E7EB] flex items-center justify-center shrink-0 transition-transform ${openIndex === i ? 'bg-[#FF385C] border-[#FF385C]' : ''}`}>
                       {openIndex === i ? (
                         <svg width="12" height="2" viewBox="0 0 12 2" fill="none" aria-hidden="true">
-                          <path d="M1 1h10" stroke="#2A2A2A" strokeWidth="2" strokeLinecap="round" />
+                          <path d="M1 1h10" stroke="white" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                       ) : (
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -133,31 +129,36 @@ export default function FAQSection() {
                   id={`faq-answer-${i}`}
                   role="region"
                   aria-labelledby={`faq-question-${i}`}
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === i ? "max-h-125 opacity-100 mt-4" : "max-h-0 opacity-0"
+                  className={`grid transition-all duration-300 ${
+                    openIndex === i ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
-                  <p className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 leading-relaxed m-0">
-                    {faq.a}
-                  </p>
+                  <div className="overflow-hidden">
+                    <p className="text-[#4A5565] text-sm md:text-base leading-relaxed m-0 pr-11">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
               </article>
             ))}
 
             {filteredFaqs.length === 0 && (
-              <div className="text-center py-8 ff-inter-regular-400 fs-16-h4 font-gray-4A5565">
+              <div className="text-center py-8 text-[#4A5565] text-base">
                 No FAQs match your search.
               </div>
             )}
 
             {!showAll && !search.trim() && faqs.length > 5 && (
-              <div className="flex justify-center mt-15-px pt-4">
+              <div className="flex justify-center mt-4 pt-4 border-t border-[#E5E7EB]">
                 <button
-                  className="bg-transparent border-0 ff-inter-semibold fs-16 font-red-i cursor-pointer hover:underline p-0"
+                  className="bg-transparent border-0 font-semibold text-[#FF385C] cursor-pointer hover:underline p-0 inline-flex items-center gap-1.5"
                   onClick={() => setShowAll(true)}
                   aria-label="Show all frequently asked questions"
                 >
                   See all FAQs
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
                 </button>
               </div>
             )}

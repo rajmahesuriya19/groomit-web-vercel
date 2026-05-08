@@ -9,49 +9,51 @@ const groomers = [
 
 export default function GroomersSection() {
   return (
-    <div className="container mx-auto px-4 pt-60-pb-60">
-      <h2 className="ff-inter-semibold fs-32px font-black-2A2A2A text-left md:text-center mb-0">
+    <section className="container mx-auto px-4 py-10 md:py-14">
+      <h2 className="font-semibold text-2xl md:text-[32px] text-[#1A1A1A] text-left md:text-center mb-0">
         Professional Groomers Near You
       </h2>
-      <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center mb-4 mt-10-px">
+      <p className="text-[#4A5565] text-base text-left md:text-center mt-2 mb-6">
         Vetted, reviewed, and trusted by thousands of pet parents
-      </div>
+      </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+      {/* Mobile: horizontal scroll, Desktop: grid */}
+      <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:overflow-visible">
         {groomers.map((groomer, idx) => (
-          <div key={idx} className="border border-[#E4E4E8] rounded-2xl p-3 bg-white flex flex-col">
-            <div className="flex items-center">
+          <div key={idx} className="border border-[#E5E7EB] rounded-2xl p-4 bg-white flex flex-col min-w-[260px] md:min-w-0 shrink-0 md:shrink">
+            <div className="flex items-center gap-3">
               <img
                 src={groomer.image}
                 alt={groomer.name}
-                width={50}
-                height={50}
-                className="object-cover mr-3 rounded-full"
+                width={48}
+                height={48}
+                className="object-cover rounded-full"
               />
               <div>
-                <div className="ff-inter-semibold fs-20 leading-none">{groomer.name}</div>
-                <div className="ff-inter-regular-400 font-gray-4A5565 fs-16-h4 leading-none flex items-center mt-2">
-                  <img src={`${IMG_BASE}/v7/images/home/star-orange.svg`} alt="Star" width={16} height={16} className="mr-2" />
-                  <span className="ff-inter-semibold pr-2">{groomer.rating}</span>({groomer.reviews})
+                <div className="font-semibold text-base text-[#1A1A1A]">{groomer.name}</div>
+                <div className="text-[#4A5565] text-sm flex items-center gap-1.5 mt-1">
+                  <img src={`${IMG_BASE}/v7/images/home/star-orange.svg`} alt="Star" width={14} height={14} />
+                  <span className="font-semibold text-[#1A1A1A]">{groomer.rating}</span>
+                  <span>({groomer.reviews})</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-2 mt-15-px">
-              <div className="ff-inter-regular-400 find-bg-F1F1F3 font-gray-4A5565 fs-16-h4 leading-none px-3 py-3 rounded-full">
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="bg-[#F7F8FA] text-[#4A5565] text-xs px-3 py-1.5 rounded-full">
                 {groomer.type}
-              </div>
-              <div className="ff-inter-regular-400 find-bg-F1F1F3 font-gray-4A5565 fs-16-h4 leading-none px-3 py-3 rounded-full">
+              </span>
+              <span className="bg-[#F7F8FA] text-[#4A5565] text-xs px-3 py-1.5 rounded-full">
                 {groomer.pet}
-              </div>
+              </span>
             </div>
 
-            <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 mt-15-px flex items-center">
-              <img src={`${IMG_BASE}/v7/images/home/location-gray.svg`} alt="location" width={18} height={18} className="inline mr-2" />
+            <div className="text-[#4A5565] text-sm mt-3 flex items-center gap-2">
+              <img src={`${IMG_BASE}/v7/images/home/location-gray.svg`} alt="location" width={16} height={16} />
               {groomer.area} &bull; {groomer.experience}
             </div>
 
-            <div className="ff-inter-regular-400 fs-16-h4 mt-10-px flex items-center gap-1.5" style={{ color: "#16a34a" }}>
+            <div className="text-[#16a34a] text-sm mt-2 flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
@@ -59,13 +61,15 @@ export default function GroomersSection() {
               {groomer.nextAvailable}
             </div>
 
-            <button className="bg-transparent mt-15-px border-0 ff-inter-semibold fs-16-h4 font-red-i cursor-pointer p-0 text-left">
+            <button className="bg-transparent mt-4 border-0 font-semibold text-sm text-[#FF385C] cursor-pointer p-0 text-left inline-flex items-center gap-1">
               View Profile
-              <img src={`${IMG_BASE}/v7/images/home/arrow-red.svg`} alt="arrow" width={16} height={16} className="inline ml-1" />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </button>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

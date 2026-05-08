@@ -44,29 +44,29 @@ const serviceOptions = [
 
 export default function FindBestFit() {
   return (
-    <section className="find-bg-F1F1F3 pt-60-pb-60">
+    <section className="bg-[#F7F8FA] py-10 md:py-14">
       <div className="container mx-auto px-4">
-        <div className="ff-inter-semibold fs-32px font-black-2A2A2A text-left md:text-center">
+        <h2 className="font-semibold text-2xl md:text-[32px] text-[#1A1A1A] text-left md:text-center">
           Find the Best Fit for Your Pet
-        </div>
-        <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 text-left md:text-center mt-2 md:mt-0 pb-20-px">
+        </h2>
+        <p className="text-[#4A5565] text-base text-left md:text-center mt-2 mb-6">
           Compare grooming options and choose the experience that suits your pet&apos;s needs and your schedule.
-        </div>
+        </p>
 
-        <div className="pet-box gap-2 md:gap-12 overflow-x-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {serviceOptions.map((service) => (
-            <div key={service.title} className="bg-white border w-full min-w-[280px] rounded-2xl p-20">
-              <div className="flex items-center">
-                <div className="border rounded-full p-3 mr-3 bg-[#FFF0F2]">
+            <div key={service.title} className="bg-white border border-[#E5E7EB] rounded-2xl p-5">
+              <div className="flex items-center gap-3">
+                <div className="rounded-full p-3 bg-[#FFF0F2]">
                   <img src={service.icon} width={24} height={24} alt={service.title} />
                 </div>
-                <div className="ff-inter-semibold fs-20">{service.title}</div>
+                <span className="font-semibold text-lg text-[#1A1A1A]">{service.title}</span>
               </div>
-              <ul className="list-none mb-0 p-0 mt-5">
+              <ul className="list-none mb-0 p-0 mt-4 space-y-3">
                 {service.features.map((feature, i) => (
-                  <li key={i} className={`flex items-start gap-3 ${i < service.features.length - 1 ? "pb-3" : ""}`}>
+                  <li key={i} className="flex items-start gap-3">
                     <CheckCircle />
-                    <span className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565">{feature}</span>
+                    <span className="text-[#4A5565] text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>

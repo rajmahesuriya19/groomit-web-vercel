@@ -404,3 +404,23 @@
     scroll-behavior: smooth;
   }
 }
+
+/* ─── Mobile Safe Area Support ───────────────────────────────────────────── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ─── Line Clamp Utilities ───────────────────────────────────────────────── */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Mobile Bottom Bar Spacing ──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 5.5rem; /* Account for fixed bottom bar */
+  }
+}

@@ -18,27 +18,31 @@ const serviceAreas = [
 
 export default function ServiceAreas() {
   return (
-    <div className="container mx-auto px-4 pt-60-pb-60">
-      <div className="find-bg-F1F1F3 bg-transparent-mobile p-3 md:p-12 rounded-2xl md:flex items-center">
-        <div className="w-full px-0">
-          <h3 className="ff-inter-semibold fs-32px mb-0">Service Available Nationwide!</h3>
-          <div className="ff-inter-regular-400 fs-16-h4 font-gray-4A5565 pt-3 md:pt-0">
-            Groomit brings trusted grooming to pet parents across the United States. Comfort, Flexibility, and value, all in one service.
+    <section className="container mx-auto px-4 py-10 md:py-14">
+      <div className="bg-[#F7F8FA] p-5 md:p-10 rounded-2xl">
+        <div className="md:flex md:items-start md:gap-10">
+          <div className="md:w-2/5 shrink-0">
+            <h3 className="font-semibold text-2xl md:text-[32px] text-[#1A1A1A] mb-0">
+              Service Available Nationwide!
+            </h3>
+            <p className="text-[#4A5565] text-base mt-2 md:mt-3">
+              Groomit brings trusted grooming to pet parents across the United States.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:flex-1">
+            {serviceAreas.map((area) => (
+              <a
+                key={area}
+                href="/location"
+                className="bg-white text-[#4A5565] text-sm px-4 py-2.5 rounded-xl no-underline hover:bg-[#1A1A1A] hover:text-white transition-colors shadow-sm"
+              >
+                {area}
+              </a>
+            ))}
           </div>
         </div>
-
-        <div className="w-full mt-3 md:mt-0 flex flex-wrap gap-2">
-          {serviceAreas.map((area) => (
-            <a
-              key={area}
-              href="/location"
-              className="bg-white border-0 ff-inter-regular-400 font-gray-4A5565 fs-16-h4 leading-none px-4 py-3 rounded-2xl no-underline inline-block hover:bg-gray-100 transition-colors cursor-pointer"
-            >
-              {area}
-            </a>
-          ))}
-        </div>
       </div>
-    </div>
+    </section>
   )
 }

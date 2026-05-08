@@ -56,35 +56,50 @@ function MobileAccordion({ title, links }: { title: string; links: { label: stri
     const [open, setOpen] = useState(title === "About")
 
     return (
-        <div className="bg-transparent border-0">
-            <h2>
-                <button className="custom-toggle" onClick={() => setOpen(!open)} type="button">
-                    <span className="ff-inter-semibold fs-16-h4 text-white">{title}</span>
-                </button>
-            </h2>
-            {open && (
-                <div className="custom-body ff-inter-regular-400 fs-16-h4">
+        <div className="border-b border-[#3A3A3A]">
+            <button 
+                className="w-full flex items-center justify-between py-4 bg-transparent border-0 cursor-pointer"
+                onClick={() => setOpen(!open)} 
+                type="button"
+            >
+                <span className="font-semibold text-white">{title}</span>
+                <svg 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="white" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    className={`transition-transform ${open ? 'rotate-180' : ''}`}
+                >
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </button>
+            <div className={`grid transition-all duration-300 ${open ? 'grid-rows-[1fr] pb-4' : 'grid-rows-[0fr]'}`}>
+                <div className="overflow-hidden flex flex-col gap-3">
                     {links.map((link) => (
-                        <FooterLink key={link.label} href={link.href} external={link.external} className="text-white no-underline leading-none">
+                        <FooterLink key={link.label} href={link.href} external={link.external} className="text-white/70 text-sm no-underline">
                             {link.label}
                         </FooterLink>
                     ))}
                 </div>
-            )}
+            </div>
         </div>
     )
 }
 
 export default function Footer() {
     return (
-        <div className="footer-new-bg p-0">
+        <footer className="bg-[#1A1A1A]">
             {/* Brand logos bar */}
-            <div className="footer-topnew-bg">
+            <div className="bg-[#2A2A2A] border-b border-[#3A3A3A]">
                 <div className="container mx-auto px-4">
-                    <div className="flex justify-between py-3 md:py-4 items-center">
+                    <div className="flex justify-between items-center py-4 gap-4 overflow-x-auto">
                         {brandLogos.map((logo) => (
-                            <a key={logo.alt} href={logo.href} target="_blank" rel="noopener noreferrer" className={logo.hideOnMobile ? "hidden md:block" : "block"}>
-                                <img src={logo.src} alt={logo.alt} width={logo.width} height={40} className="mt-0 md:mt-3" />
+                            <a key={logo.alt} href={logo.href} target="_blank" rel="noopener noreferrer" className={`shrink-0 ${logo.hideOnMobile ? "hidden md:block" : "block"}`}>
+                                <img src={logo.src} alt={logo.alt} width={logo.width} height={32} className="h-6 md:h-8 w-auto opacity-80 hover:opacity-100 transition-opacity" />
                             </a>
                         ))}
                     </div>
@@ -92,47 +107,45 @@ export default function Footer() {
             </div>
 
             {/* Main footer content */}
-            <div className="container mx-auto px-4 footer-50px">
-                <div className="flex flex-col md:flex-row">
+            <div className="container mx-auto px-4 py-10 md:py-12">
+                <div className="flex flex-col md:flex-row gap-10">
                     {/* Left: Help section */}
-                    <div className="flex flex-col items-center md:items-start w-full md:w-288px mx-auto md:mx-0">
-                        <div className="ff-inter-semibold text-white fs-32px">Need help?</div>
-                        <div className="text-white ff-inter-regular-400 fs-16-h4">Get support in minutes</div>
+                    <div className="flex flex-col items-center md:items-start w-full md:w-[260px] shrink-0">
+                        <h3 className="font-semibold text-2xl text-white">Need help?</h3>
+                        <p className="text-white/80 text-sm mt-1">Get support in minutes</p>
 
-                        <a href="mailto:help@groomit.me" className="no-underline mt-20-px w-full max-w-[240px]">
-                            <button className="font-red-i ff-inter-semibold fs-16 red-button-footer border border-[#E5E7EB] bg-white flex items-center justify-center cursor-pointer w-full rounded-xl py-3 hover:bg-gray-50 transition-colors">
-                                <img src={`${IMG}/home/mail-red.svg`} width={24} height={24} alt="Mail" className="mr-2" />
+                        <a href="mailto:help@groomit.me" className="no-underline mt-5 w-full max-w-[220px]">
+                            <button className="text-[#FF385C] font-semibold text-sm bg-white flex items-center justify-center gap-2 cursor-pointer w-full rounded-xl py-3 hover:bg-gray-50 transition-colors">
+                                <img src={`${IMG}/home/mail-red.svg`} width={20} height={20} alt="" />
                                 help@groomit.me
                             </button>
                         </a>
 
-                        <div className="flex justify-center mt-10-px">
-                            <a href="tel:+18883967170" className="flex ff-inter-semibold fs-16 mt-10-px text-white no-underline">
-                                <img src={`${IMG}/webapp/icons/call-white.svg`} height={24} width={24} alt="Call to Book" className="mr-2" />
-                                +1(888) 396 7170
-                            </a>
-                        </div>
-                        <div className="flex justify-center mt-10-px text-white fs-16-h4 ff-inter-regular-400">
-                            Call Us During 8am to 8pm EST
-                        </div>
+                        <a href="tel:+18883967170" className="flex items-center gap-2 font-semibold text-white no-underline mt-4">
+                            <img src={`${IMG}/webapp/icons/call-white.svg`} height={20} width={20} alt="" />
+                            +1(888) 396 7170
+                        </a>
+                        <p className="text-white/60 text-sm mt-1">
+                            Call Us 8am to 8pm EST
+                        </p>
 
                         {/* Social links */}
-                        <div className="flex gap-10-px justify-center mt-20-px">
+                        <div className="flex gap-3 mt-5">
                             {socialLinks.map((social) => (
-                                <a key={social.alt} target="_blank" href={social.href} rel="noopener noreferrer">
-                                    <img src={social.src} alt={social.alt} width={43} height={43} />
+                                <a key={social.alt} target="_blank" href={social.href} rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                                    <img src={social.src} alt={social.alt} width={36} height={36} />
                                 </a>
                             ))}
                         </div>
                     </div>
 
                     {/* Desktop footer links */}
-                    <div className="hidden md:flex justify-between pl-30-px w-full">
+                    <div className="hidden md:grid md:grid-cols-4 gap-8 flex-1">
                         {Object.entries(footerLinks).map(([title, links]) => (
-                            <div key={title} className="flex flex-col footer-links ff-inter-regular-400 fs-16-h4 gap-14-px">
-                                <h4 className="ff-inter-semibold leading-none text-white fs-16-h4">{title}</h4>
+                            <div key={title} className="flex flex-col gap-3">
+                                <h4 className="font-semibold text-white text-sm">{title}</h4>
                                 {links.map((link) => (
-                                    <FooterLink key={link.label} href={link.href} external={"external" in link ? link.external : false} className="text-white no-underline leading-none">
+                                    <FooterLink key={link.label} href={link.href} external={"external" in link ? link.external : false} className="text-white/70 hover:text-white text-sm no-underline transition-colors">
                                         {link.label}
                                     </FooterLink>
                                 ))}
@@ -141,7 +154,7 @@ export default function Footer() {
                     </div>
 
                     {/* Mobile accordion */}
-                    <div className="md:hidden mt-20-px">
+                    <div className="md:hidden">
                         {Object.entries(footerLinks).map(([title, links]) => (
                             <MobileAccordion key={title} title={title} links={links} />
                         ))}
@@ -149,26 +162,24 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom border */}
-                <div className="footer-bottom-border w-full"></div>
+                <div className="border-t border-[#3A3A3A] my-8" />
 
                 {/* Bottom links */}
-                <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-0 text-center">
-                    <div className="footer-links-bottom ff-inter-regular-400 fs-16-h4">
-                        <Link className="text-white no-underline" to="/terms">Terms of Service</Link>
-                        <span className="text-gray-500">|</span>
-                        <Link className="text-white no-underline" to="/terms-privacy">Privacy Policy</Link>
-                        <span className="text-gray-500">|</span>
-                        <Link className="text-white no-underline" to="/terms-privacy#cookies-policy">Cookies Policy</Link>
-                        <span className="text-gray-500">|</span>
-                        <Link className="text-white no-underline" to="/terms-privacy#acceptable-use-of-policy">Acceptable Use of Policy</Link>
-                        <span className="text-gray-500">|</span>
-                        <Link className="text-white no-underline" to="/accessibility">Accessibility</Link>
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+                    <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm">
+                        <Link className="text-white/70 hover:text-white no-underline" to="/terms">Terms</Link>
+                        <span className="text-white/30">|</span>
+                        <Link className="text-white/70 hover:text-white no-underline" to="/terms-privacy">Privacy</Link>
+                        <span className="text-white/30">|</span>
+                        <Link className="text-white/70 hover:text-white no-underline" to="/terms-privacy#cookies-policy">Cookies</Link>
+                        <span className="text-white/30">|</span>
+                        <Link className="text-white/70 hover:text-white no-underline" to="/accessibility">Accessibility</Link>
                     </div>
-                    <div className="ff-inter-regular-400 fs-16-h4 text-white mt-3 md:mt-0">
+                    <p className="text-white/60 text-sm">
                         &copy;2026 Groomit, Inc. All rights reserved.
-                    </div>
+                    </p>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
