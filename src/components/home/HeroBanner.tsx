@@ -28,12 +28,7 @@ export default function HeroBanner() {
               <p className="mt-3 text-white/85 text-sm md:text-base max-w-[280px] md:max-w-md leading-relaxed">
                 Top-rated groomers near you. See real-time availability and book instantly.
               </p>
-              <a href="/guest/booking/start" className="no-underline inline-block">
-                <button className="mt-5 md:mt-6 bg-[#ff314a] hover:bg-[#e02a40] text-white px-8 py-3.5 text-base rounded-xl font-semibold transition-all cursor-pointer border-0 shadow-lg shadow-black/20">
-                  Book Now
-                </button>
-              </a>
-              <p className="mt-3 text-white/60 text-xs md:text-sm">
+              <p className="mt-4 text-white/60 text-xs md:text-sm">
                 Real online booking. Confirmed in minutes.
               </p>
               <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 text-xs md:text-sm">
